@@ -5,8 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "start": "next start -p $PORT",
+    "lint": "next lint",
+    "heroku-postbuild":"npm run build"
   },
   "dependencies": {
     "@chakra-ui/icons": "^1.0.16",
@@ -28,5 +29,9 @@
     "eslint": "7",
     "eslint-config-next": "12.0.1",
     "typescript": "4.4.4"
+  },
+  "engines": {
+   "node": "12.22.5",
+   "npm":"7.5.2"
   }
 }
