@@ -6,35 +6,47 @@ import Intro from "../components/intro"
 import Footer from "../components/footer"
 import Skill from "../components/skill"
 import Project from "../components/project"
+import { skill } from "../components/data/skill" 
+import { detail } from "../components/data/detail"
 
 
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const skill = {
-    lang: ["JavaScript", "TypeScript", "CSS", "HTML", "C", "Python"],
-    fwork: ["ReactJS","NextJS","VueJS","Flask","OpenCV"],
-  }
-
   return {
     props: {
       skill,
+      detail,
     },
   }
 }
 
 interface Props {
   skill: {
-    lang: string[],
-    fwork: string[],
-  }
+    lang: {
+      name:string ,
+      link: string,
+      logo: string,
+    }[],
+    fwork: {
+      name: string,
+      link: string,
+      logo: string,
+    }[],
+  },
+  detail:{
+    years: string,
+    enducation:string ,
+    degree:string,
+  }[],
 }
 
-const Home = ({ skill }: Props) => {
+const Home = ({ skill , detail }: Props) => {
+
   return (
     <>
       <Nav />
       <Intro />
-      <Bio />
+      <Bio detail={detail} /> 
       <Skill skill={skill} />
       <Project/>
       <Footer />

@@ -1,6 +1,5 @@
 import React from "react"
 import { Container, VStack, Heading, Text } from "@chakra-ui/react"
-import Detail from "./data/Detail.json"
 import {
   Timeline,
   TimelineItem,
@@ -11,12 +10,20 @@ import {
   TimelineOppositeContent,
 } from "@material-ui/lab"
 
-interface Props {}
+interface Props {
+  detail:{
+    years: string,
+    enducation:string ,
+    degree:string,
+  }[],
+}
 
-const index = (props: Props) => {
+const index = ({detail}: Props) => {
+
+
   return (
     <Timeline>
-      {Detail.detail.map((val, i) => {
+      {detail.map((val, i) => {
         return (
           <TimelineItem key={i} >
             <TimelineOppositeContent >

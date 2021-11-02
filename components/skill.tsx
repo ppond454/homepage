@@ -1,21 +1,34 @@
 import {
   Container,
   Heading,
-  Box,
+  Image,
   Text,
   Wrap,
   WrapItem,
-  HStack,
+  Box,
+  AspectRatio
 } from "@chakra-ui/react"
+import Link from "next/link"
+import { motion } from "framer-motion"
+
+const BoxMotion = motion(Box)
 
 interface Props {
   skill: {
-    lang: string[]
-    fwork: string[]
-  }
+    lang: {
+      name:string ,
+      link: string,
+      logo: string,
+    }[],
+    fwork: {
+      name: string,
+      link: string,
+      logo: string,
+    }[],
+  },
 }
 const Skill = ({ skill }: Props) => {
-
+  const { lang, fwork } = skill
   return (
     <>
       <Box align="center">
@@ -31,26 +44,43 @@ const Skill = ({ skill }: Props) => {
           m="20px"
           borderRadius={20}
           w={{ base: "80%", md: "container.sm" }}
+          boxShadow="md"
         >
           <Heading fontSize="md" m="5">
             Programming Language
           </Heading>
 
           <Wrap p="5" spacing={{ base: "1rem", md: "2rem" }} justify="center">
-            {skill.lang.map((val, i) => {
+            {lang.map((items, i) => {
               return (
                 <WrapItem key={i}>
-                  <Box
-                    p="2"
-                    key={i}
-                    borderRadius={20}
-                    boxSize={{base:"90px" , md:"100px"}}
-                    bg="whiteAlpha.600"
-                    textAlign="center"
-                    style={{ backdropFilter: "blur(10px)" }}
-                  >
-                    <Text>{val}</Text>
-                  </Box>
+                  <Link href={items.link}>
+                    <a target="_blank">
+                      <BoxMotion
+                        p="2"
+                        key={i}
+                        borderRadius={20}
+                        boxSize={{ base: "90px", md: "100px" }}
+                        bg="whiteAlpha.600"
+                        textAlign="center"
+                        style={{ backdropFilter: "blur(10px)" }}
+                        boxShadow="lg"
+                        // drag="x"
+                        // dragConstraints={{ left: -100, right: 100 }}
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
+                      >
+                        <Box>
+                          <Image
+                            display="inline-block"
+                            src={items.logo}
+                            alt={items.name}
+                          />
+                          {/* <Text fontSize="14px">{items.name}</Text> */}
+                        </Box>
+                      </BoxMotion>
+                    </a>
+                  </Link>
                 </WrapItem>
               )
             })}
@@ -64,26 +94,44 @@ const Skill = ({ skill }: Props) => {
           m="20px"
           borderRadius={20}
           w={{ base: "80%", md: "container.sm" }}
+          boxShadow="md"
         >
           <Heading fontSize="md" m="5">
             Framework
           </Heading>
 
           <Wrap p="5" spacing={{ base: "1rem", md: "2rem" }} justify="center">
-            {skill.fwork.map((val, i) => {
+            {fwork.map((items, i) => {
               return (
                 <WrapItem key={i}>
-                  <Box
-                    p="2"
-                    key={i}
-                    borderRadius={20}
-                    boxSize={{base:"90px" , md:"100px"}}
-                    bg="whiteAlpha.600"
-                    textAlign="center"
-                    style={{ backdropFilter: "blur(10px)" }}
-                  >
-                    <Text>{val}</Text>
-                  </Box>
+                  <Link href={items.link}>
+                    <a target="_blank">
+                      <BoxMotion
+                        p="2"
+                        key={i}
+                        borderRadius={20}
+                        boxSize={{ base: "90px", md: "100px" }}
+                        bg="whiteAlpha.600"
+                        textAlign="center"
+                        style={{ backdropFilter: "blur(10px)" }}
+                        boxShadow="lg"
+                        
+                        // drag="x"
+                        // dragConstraints={{ left: -100, right: 100 }}
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
+                      >
+                        <Box  >
+                          <Image
+                            display="inline-block"
+                            src={items.logo}
+                            alt={items.name}
+                          />
+                          {/* <Text fontSize="14px">{items.name}</Text> */}
+                        </Box>
+                      </BoxMotion>
+                    </a>
+                  </Link>
                 </WrapItem>
               )
             })}

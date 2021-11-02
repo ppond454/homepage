@@ -30,6 +30,7 @@ const nav = (props: Props) => {
       bg="whiteAlpha.500"
       zIndex={1}
       style={{ backdropFilter: "blur(10px)" }}
+      boxShadow="base"
     >
       <Container
         p={3}
