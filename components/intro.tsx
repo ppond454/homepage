@@ -13,7 +13,7 @@ const Intro = (props: Props) => {
           textAlign="center"
           color="#565656"
         >
-          Hi ! I&apos;m very interesting a Forntend developer
+          Hi ! I&apos;m very interesting a Frontend developer
         </Text>
       </Box>
       <Flex>
@@ -28,7 +28,7 @@ const Intro = (props: Props) => {
             borderColor="whiteAlpha.800"
             borderWidth={2}
             borderStyle="solid"
-            maxWidth="200px"
+            maxWidth={{ base:"150px" , md: "200px"}}
             display="inline-block"
             borderRadius="full"
             src="/images/profile.jpg"

@@ -29,7 +29,7 @@ const nav = (props: Props) => {
       w="100%"
       bg="whiteAlpha.400"
       zIndex={1}
-      style={{ backdropFilter: "blur(3px)" }}
+      style={{ backdropFilter: "blur(10px)" }}
     >
       <Container
         p={3}
