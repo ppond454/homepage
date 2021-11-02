@@ -48,7 +48,7 @@ const Home = ({ skill , detail }: Props) => {
       <Intro />
       <Bio detail={detail} /> 
       <Skill skill={skill} />
-      //<Project/>
+      {/* <Project/> */}
       <Footer />
     </>
   )
