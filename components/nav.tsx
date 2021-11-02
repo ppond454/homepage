@@ -27,7 +27,7 @@ const nav = (props: Props) => {
       position="fixed"
       as="nav"
       w="100%"
-      bg="whiteAlpha.400"
+      bg="whiteAlpha.500"
       zIndex={1}
       style={{ backdropFilter: "blur(10px)" }}
     >

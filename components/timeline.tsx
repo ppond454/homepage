@@ -1,6 +1,6 @@
 import React from "react"
 import { Container, VStack, Heading, Text } from "@chakra-ui/react"
-import Detail from "./Detail.json"
+import Detail from "./data/Detail.json"
 import {
   Timeline,
   TimelineItem,
