@@ -8,7 +8,7 @@ import Layout from "../containers/layout/index"
 import Theme from "../theme/theme"
 
 
-import "@fontsource/pt-sans"
+import "@fontsource/raleway"
 import "@fontsource/nunito"
 
 function MyApp({ Component, pageProps }: AppProps) {
