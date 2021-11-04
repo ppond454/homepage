@@ -10,9 +10,6 @@ import { skill } from "../components/data/skill"
 import { detail } from "../components/data/detail"
 import Motions from "../containers/motions/motions"
 
-import "@fontsource/pt-sans"
-import "@fontsource/nunito"
-
 
 export const getStaticProps: GetStaticProps = async (context) => {
   return {

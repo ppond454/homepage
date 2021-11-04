@@ -7,6 +7,10 @@ import { AnimatePresence } from 'framer-motion'
 import Layout from "../containers/layout/index"
 import Theme from "../theme/theme"
 
+
+import "@fontsource/pt-sans"
+import "@fontsource/nunito"
+
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider theme={Theme}>
