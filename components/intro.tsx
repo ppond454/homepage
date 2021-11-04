@@ -42,7 +42,7 @@ const Intro = (props: Props) => {
             maxWidth={{ base:"150px" , md: "200px"}}
             display="inline-block"
             borderRadius="full"
-            src="/images/profile.avif"
+            src="/images/profile.jpg"
             alt="Profile"
           />
         </Box>
