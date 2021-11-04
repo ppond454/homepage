@@ -36,8 +36,8 @@ const Theme = extendTheme({
   config,
   styles,
   fonts: {
-    heading: "Nunito",
-    body: "PT Sans",
+    heading: "Raleway",
+    body: "Nunito",
   },
   components
 })
