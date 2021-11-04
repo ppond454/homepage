@@ -1,5 +1,6 @@
 import React from "react"
 import NextLink from "next/link"
+import ItemLink from "../containers/customLink"
 import {
   Heading,
   Flex,
@@ -13,27 +14,40 @@ import {
   IconButton,
   MenuItem,
   MenuList,
+  useColorModeValue,
 } from "@chakra-ui/react"
 import { ExternalLinkIcon, HamburgerIcon } from "@chakra-ui/icons"
+import Toggle from "../containers/toggle"
+import { motion } from "framer-motion"
 
-import "@fontsource/raleway/400.css"
-import "@fontsource/open-sans/700.css"
+const BoxMotion = motion(Box)
+
 
 interface Props {}
 
 const nav = (props: Props) => {
+
+ 
+
+  const colorNav: string = useColorModeValue("whiteAlpha.500", "blackAlpha.200")
+
   return (
-    <Flex
+    <BoxMotion
       position="fixed"
       as="nav"
       w="100%"
-      bg="whiteAlpha.500"
+      bg={colorNav}
       zIndex={1}
       style={{ backdropFilter: "blur(10px)" }}
       boxShadow="base"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5, type: "easeInOut" }}
+      
     >
       <Container
-        p={3}
+        p={{ base: "3", md: "0" }}
         display="flex"
         maxW="container.md"
         wrap="warp"
@@ -47,7 +61,7 @@ const nav = (props: Props) => {
                 as="h1"
                 size="md"
                 letterSpacing={"tighter"}
-                color="#565656"
+                // color="#565656"
               >
                 Siritep Tongduang
               </Heading>
@@ -61,16 +75,21 @@ const nav = (props: Props) => {
           alignItems="center"
           flexGrow={1}
           mt={{ base: 4, nmd: 0 }}
+          spacing="4"
         >
+          <ItemLink href="/projects">Projects</ItemLink>
           <Link isExternal href="https://github.com/ppond454" borderRadius={5}>
             Github
             <ExternalLinkIcon />
           </Link>
+          {/* <Spacer  /> */}
         </Stack>
 
         <Box flex={1} align="right">
+          <Toggle />
+
           <Box ml={2} display={{ base: "inline-block", md: "none" }}>
-            <Menu>
+            <Menu isLazy id="navbar-menu">
               <MenuButton
                 as={IconButton}
                 icon={<HamburgerIcon />}
@@ -78,7 +97,10 @@ const nav = (props: Props) => {
                 aria-label="Options"
               />
               <MenuList>
-                <MenuItem as={Link} href="https://github.com/">
+                <NextLink href="/projects">
+                  <MenuItem as={Link}>Projects</MenuItem>
+                </NextLink>
+                <MenuItem as={Link} href="https://github.com/ppond.454">
                   Github
                   <ExternalLinkIcon />
                 </MenuItem>
@@ -87,7 +109,7 @@ const nav = (props: Props) => {
           </Box>
         </Box>
       </Container>
-    </Flex>
+    </BoxMotion>
   )
 }
 

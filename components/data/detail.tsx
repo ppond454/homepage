@@ -14,15 +14,6 @@ export const detail =  [
       enducation: "Matthayom Watthaphae Municipal School",
       degree: "Mathematics - Science",
     },
-    {
-      years: "2009 - 2010",
-      enducation: "Pranarai School",
-      degree: "",
-    },
-    {
-      years: "2003 - 2009",
-      enducation: "Paibool School",
-      degree: "",
-    },
+    
   ]
 

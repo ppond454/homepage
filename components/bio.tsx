@@ -1,25 +1,42 @@
-import { Container, Heading, Box } from "@chakra-ui/react"
-import Timeline from "./timeline"
+import {
+  Container,
+  Text,
+  Heading,
+  Box,
+  Divider,
+  Stack,
+} from "@chakra-ui/react"
 import React from "react"
+import Motions from "../containers/motions/motions"
+
 
 interface Props {
-  detail:{
-    years: string,
-    enducation:string ,
-    degree:string,
-  }[],
+  detail: {
+    years: string
+    enducation: string
+    degree: string
+  }[]
 }
 
-const Bio = ({detail}: Props) => {
+const Bio = ({ detail }: Props) => {
   return (
-    <Box pt="10">
-      <Container>
-        <Heading size="lg" color="#565656" as="u">
-          Bio
-        </Heading>
-      </Container >
-      <Timeline detail={detail} />
-    </Box>
+    <Container mb="8" mt="8" >
+      <Heading size="lg" variant="section-title" >Education</Heading>
+      {detail.map((val, i) => {
+        return (
+          <Stack direction="row" h="120px" p={4} mt="4" >
+            <Text fontSize={{base:"15px" ,md:"16px"}} >{val.years}</Text>
+            <Divider  orientation="vertical" bg="teal.200" w="1" />
+            <Box>
+            <Text fontSize={{base:"15px" ,md:"16px"}}>{val.enducation}</Text>
+            <Text
+            color="red.200" 
+            fontSize={{base:"12px" ,md:"13px"}}>{val.degree}</Text>
+            </Box>
+          </Stack>
+        )
+      })}
+    </Container>
   )
 }
 

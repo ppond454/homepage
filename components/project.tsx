@@ -15,7 +15,7 @@ const Project = (props: Props) => {
     <>
       <Box align="center">
         <Container textAlign="left">
-          <Heading as="u" size="lg">
+          <Heading as="u" size="lg" variant="section-title">
             Project
           </Heading>
         </Container>
