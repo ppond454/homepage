@@ -1,6 +1,5 @@
 import { Container, Text, Heading, Box, Divider, Stack } from "@chakra-ui/react"
 import React from "react"
-import Motions from "../containers/motions/motions"
 
 interface Props {
   detail: {
@@ -24,10 +23,14 @@ const Bio = ({ detail }: Props) => {
             p={4}
             mt="4"
             display={{ base: "ruby-text-container", md: "inline-flex" }}
-            
+            key={i}
           >
             <Text fontSize={{ base: "12px", md: "14px" }}>{val.years}</Text>
-            <Divider orientation="vertical"  bg="teal.200" w={{base:"0.5" , md:"1"}} />
+            <Divider
+              orientation="vertical"
+              bg="teal.200"
+              w={{ base: "0.5", md: "1" }}
+            />
             <Box>
               <Text fontSize={{ base: "14px", md: "16px" }}>
                 {val.enducation}
@@ -36,7 +39,6 @@ const Bio = ({ detail }: Props) => {
                 {val.degree}
               </Text>
             </Box>
-          
           </Stack>
         )
       })}
