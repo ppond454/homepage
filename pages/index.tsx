@@ -49,7 +49,7 @@ const Home = ({ skill , detail }: Props) => {
       <Bio detail={detail} /> 
       <Skill skill={skill} />
       
-      {/* <Project/> */}
+      <Project/>
      
     </Motions>
   )

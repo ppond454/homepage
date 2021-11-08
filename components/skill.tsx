@@ -7,12 +7,13 @@ import {
   WrapItem,
   Box,
   AspectRatio,
-  useColorModeValue
+  useColorModeValue,
 } from "@chakra-ui/react"
 import Link from "next/link"
 import { motion } from "framer-motion"
 
 const BoxMotion = motion(Box)
+const ImgMotion = motion(Image)
 
 interface Props {
   skill: {
@@ -40,12 +41,12 @@ const Skill = ({ skill }: Props) => {
         </Container>
         <Box
           textAlign="center"
-          bg= {useColorModeValue("#D7CEC7","none")}
+          bg={useColorModeValue("#D7CEC7", "none")}
           p="5px"
           m="20px"
           borderRadius={20}
           w={{ base: "80%", md: "container.sm" }}
-          boxShadow={useColorModeValue("md","none")}
+          boxShadow={useColorModeValue("md", "none")}
         >
           <Heading fontSize="md" m="5">
             Programming Language
@@ -70,14 +71,17 @@ const Skill = ({ skill }: Props) => {
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}
                       >
-                        <Image
+                        <ImgMotion
+                          whileHover={{ rotate: 20 }}
                           h="3rem"
                           w="3rem"
                           display="inline-block"
                           src={items.logo}
                           alt={items.name}
                         />
-                        <Text fontSize="small" as="abbr" >{items.name}</Text>
+                        <Text fontSize="small" as="abbr">
+                          {items.name}
+                        </Text>
                       </BoxMotion>
                     </a>
                   </Link>
@@ -89,12 +93,12 @@ const Skill = ({ skill }: Props) => {
 
         <Box
           textAlign="center"
-          bg= {useColorModeValue("#D7CEC7","none")}
+          bg={useColorModeValue("#D7CEC7", "none")}
           p="5px"
           m="20px"
           borderRadius={20}
           w={{ base: "80%", md: "container.sm" }}
-          boxShadow={useColorModeValue("md","none")}
+          boxShadow={useColorModeValue("md", "none")}
         >
           <Heading fontSize="md" m="5">
             Framework
@@ -119,14 +123,17 @@ const Skill = ({ skill }: Props) => {
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.9 }}
                       >
-                        <Image
+                        <ImgMotion
                           h="3rem"
                           w="3rem"
                           display="inline-block"
                           src={items.logo}
                           alt={items.name}
+                          whileHover={{ rotate: 20 }}
                         />
-                        <Text fontSize="small" as="abbr" >{items.name}</Text>
+                        <Text fontSize="small" as="abbr">
+                          {items.name}
+                        </Text>
                       </BoxMotion>
                     </a>
                   </Link>
