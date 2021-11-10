@@ -6,13 +6,14 @@ import {
   Wrap,
   WrapItem,
   Box,
-  AspectRatio,
+  Link,
   useColorModeValue,
 } from "@chakra-ui/react"
-import Link from "next/link"
+import NextLink from "next/link"
 import { motion } from "framer-motion"
+import { useState } from "react"
 
-const BoxMotion = motion(Box)
+const BoxMotion = motion(Link)
 const ImgMotion = motion(Image)
 
 interface Props {
@@ -31,6 +32,9 @@ interface Props {
 }
 const Skill = ({ skill }: Props) => {
   const { lang, fwork } = skill
+  // const [rotate, setRotate] = useState<boolean>(false)
+  // console.log(rotate)
+
   return (
     <>
       <Box align="center">
@@ -56,35 +60,38 @@ const Skill = ({ skill }: Props) => {
             {lang.map((items, i) => {
               return (
                 <WrapItem key={i}>
-                  <Link href={items.link}>
-                    <a target="_blank">
-                      <BoxMotion
-                        w="5rem"
-                        h="5rem"
-                        p="2"
-                        key={i}
-                        borderRadius={20}
-                        bg="whiteAlpha.600"
-                        textAlign="center"
-                        style={{ backdropFilter: "blur(10px)" }}
-                        boxShadow="lg"
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                      >
-                        <ImgMotion
-                          whileHover={{ rotate: 20 }}
-                          h="3rem"
-                          w="3rem"
-                          display="inline-block"
-                          src={items.logo}
-                          alt={items.name}
-                        />
-                        <Text fontSize="small" as="abbr">
-                          {items.name}
-                        </Text>
-                      </BoxMotion>
-                    </a>
-                  </Link>
+                  <BoxMotion
+                    href={items.link}
+                    isExternal
+                    w="5rem"
+                    h="5rem"
+                    p="2"
+                    key={i}
+                    borderRadius={20}
+                    bg="whiteAlpha.600"
+                    textAlign="center"
+                    style={{
+                      backdropFilter: "blur(10px)",
+                      textDecoration: "none",
+                    }}
+                    boxShadow="lg"
+                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    whileTap={{ scale: 0.9 }}
+                    // onMouseOver={() => setRotate(true)}
+                  >
+                    <ImgMotion
+                      whileHover={{ rotate: 20 }}
+                      h="3rem"
+                      w="3rem"
+                      display="inline-block"
+                      src={items.logo}
+                      alt={items.name}
+                    />
+
+                    <Text fontSize="small" as="abbr">
+                      {items.name}
+                    </Text>
+                  </BoxMotion>
                 </WrapItem>
               )
             })}
@@ -101,42 +108,45 @@ const Skill = ({ skill }: Props) => {
           boxShadow={useColorModeValue("md", "none")}
         >
           <Heading fontSize="md" m="5">
-            Framework
+            Programming Language
           </Heading>
 
           <Wrap p="5" spacing={{ base: "1rem", md: "1rem" }} justify="center">
             {fwork.map((items, i) => {
               return (
                 <WrapItem key={i}>
-                  <Link href={items.link}>
-                    <a target="_blank">
-                      <BoxMotion
-                        p="2"
-                        key={i}
-                        borderRadius={20}
-                        w="5rem"
-                        h="5rem"
-                        bg="whiteAlpha.600"
-                        textAlign="center"
-                        style={{ backdropFilter: "blur(10px)" }}
-                        boxShadow="lg"
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                      >
-                        <ImgMotion
-                          h="3rem"
-                          w="3rem"
-                          display="inline-block"
-                          src={items.logo}
-                          alt={items.name}
-                          whileHover={{ rotate: 20 }}
-                        />
-                        <Text fontSize="small" as="abbr">
-                          {items.name}
-                        </Text>
-                      </BoxMotion>
-                    </a>
-                  </Link>
+                  <BoxMotion
+                    href={items.link}
+                    isExternal
+                    w="5rem"
+                    h="5rem"
+                    p="2"
+                    key={i}
+                    borderRadius={20}
+                    bg="whiteAlpha.600"
+                    textAlign="center"
+                    style={{
+                      backdropFilter: "blur(10px)",
+                      textDecoration: "none",
+                    }}
+                    boxShadow="lg"
+                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    whileTap={{ scale: 0.9 }}
+                    // onMouseOver={() => setRotate(true)}
+                  >
+                    <ImgMotion
+                      whileHover={{ rotate: 20 }}
+                      h="3rem"
+                      w="3rem"
+                      display="inline-block"
+                      src={items.logo}
+                      alt={items.name}
+                    />
+
+                    <Text fontSize="small" as="abbr">
+                      {items.name}
+                    </Text>
+                  </BoxMotion>
                 </WrapItem>
               )
             })}

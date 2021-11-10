@@ -22,31 +22,37 @@ import {
 import NextLink from "next/link"
 import { motion } from "framer-motion"
 
-
-
 interface Props {}
 
 const BoxMotion = motion(LinkBox)
-
 
 const Cards = (props: Props) => {
   return (
     <NextLink href={`/projects/1`} passHref>
       <BoxMotion
-        p="5"
+        p={{ base: "none", md: "5" }}
         borderWidth="1px"
         cursor="pointer"
         rounded="xl"
-        m="8"
-        w={{ base: "md", md: "lg" }}
-        display="flex"
+        m={{ base: "3", md: "5" }}
+        w={{ base: "auto", md: "lg" }}
+        display={{ base: "inline-block", md: "flex" }}
         bg={useColorModeValue("whiteAlpha.800", "blackAlpha.600")}
         boxShadow="lg"
-        whileHover={{ scale: 1.04}}
+        whileHover={{ scale: 1.04 }}
       >
-        <Box textAlign="left">
+        <Box textAlign={{ base: "center", md: "left" }}>
+          <Image
+            display={{ md: "none", base: "grid" }}
+            src="/images/project1.png"
+            w="240px"
+            roundedTop="lg"
+            boxShadow="inner"
+          />
           <LinkOverlay href={`/projects/1`}>
-            <Text fontSize="xl">ThaiTracking-19</Text>
+            <Text fontSize="xl" pt="2">
+              ThaiTracking-19
+            </Text>
 
             <Text fontSize="sm">Bachelor of Engineering</Text>
           </LinkOverlay>
@@ -54,6 +60,7 @@ const Cards = (props: Props) => {
         <Spacer />
         <Box>
           <Image
+            display={{ base: "none", md: "flex" }}
             src="/images/project1.png"
             w="250px"
             rounded="md"
