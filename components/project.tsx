@@ -15,8 +15,20 @@ import {
 
 import Cards from "../containers/cards"
 
-interface Props {}
-const Project = (props: Props) => {
+interface Props {
+  project: {
+    name: string
+    description: string
+    fwork: string[]
+    create: string
+    source: string
+    demo: string
+    pic: string
+  }[]
+}
+
+const Project = ({project}: Props) => {
+
   return (
     <>
       <Box align="center">
@@ -25,9 +37,7 @@ const Project = (props: Props) => {
             Project
           </Heading>
         </Container>
-        <Cards />
-        <Cards />
-        <Cards />
+        <Cards project={project} />
       </Box>
     </>
   )
