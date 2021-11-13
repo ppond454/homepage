@@ -10,6 +10,7 @@ import Theme from "../theme/theme"
 import "@fontsource/raleway"
 import "@fontsource/nunito"
 
+
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider theme={Theme}>

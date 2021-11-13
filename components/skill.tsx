@@ -9,9 +9,7 @@ import {
   Link,
   useColorModeValue,
 } from "@chakra-ui/react"
-import NextLink from "next/link"
 import { motion } from "framer-motion"
-import { useState } from "react"
 
 const BoxMotion = motion(Link)
 const ImgMotion = motion(Image)
@@ -81,16 +79,9 @@ const Skill = ({ skill }: Props) => {
                   >
                     <ImgMotion
                       whileHover={{ rotate: 20 }}
-                      h="3rem"
-                      w="3rem"
-                      display="inline-block"
                       src={items.logo}
                       alt={items.name}
                     />
-
-                    <Text fontSize="small" as="abbr">
-                      {items.name}
-                    </Text>
                   </BoxMotion>
                 </WrapItem>
               )
@@ -108,7 +99,7 @@ const Skill = ({ skill }: Props) => {
           boxShadow={useColorModeValue("md", "none")}
         >
           <Heading fontSize="md" m="5">
-            Programming Language
+            Framework
           </Heading>
 
           <Wrap p="5" spacing={{ base: "1rem", md: "1rem" }} justify="center">
@@ -134,18 +125,13 @@ const Skill = ({ skill }: Props) => {
                     whileTap={{ scale: 0.9 }}
                     // onMouseOver={() => setRotate(true)}
                   >
-                    <ImgMotion
-                      whileHover={{ rotate: 20 }}
-                      h="3rem"
-                      w="3rem"
-                      display="inline-block"
-                      src={items.logo}
-                      alt={items.name}
-                    />
-
-                    <Text fontSize="small" as="abbr">
-                      {items.name}
-                    </Text>
+                    <Box >
+                      <ImgMotion
+                        whileHover={{ rotate: 20 }}
+                        src={items.logo}
+                        alt={items.name}
+                      />
+                    </Box>
                   </BoxMotion>
                 </WrapItem>
               )
