@@ -73,15 +73,11 @@ const Skill = ({ skill }: Props) => {
                       textDecoration: "none",
                     }}
                     boxShadow="lg"
-                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    whileHover={{ scale: 1.1, y: -7 }}
                     whileTap={{ scale: 0.9 }}
                     // onMouseOver={() => setRotate(true)}
                   >
-                    <ImgMotion
-                      whileHover={{ rotate: 20 }}
-                      src={items.logo}
-                      alt={items.name}
-                    />
+                    <ImgMotion src={items.logo} alt={items.name} />
                   </BoxMotion>
                 </WrapItem>
               )
@@ -121,16 +117,12 @@ const Skill = ({ skill }: Props) => {
                       textDecoration: "none",
                     }}
                     boxShadow="lg"
-                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    whileHover={{ scale: 1.1, y: -7 }}
                     whileTap={{ scale: 0.9 }}
                     // onMouseOver={() => setRotate(true)}
                   >
-                    <Box >
-                      <ImgMotion
-                        whileHover={{ rotate: 20 }}
-                        src={items.logo}
-                        alt={items.name}
-                      />
+                    <Box>
+                      <ImgMotion src={items.logo} alt={items.name} />
                     </Box>
                   </BoxMotion>
                 </WrapItem>
