@@ -18,7 +18,7 @@ import {
   Spacer,
   Image,
   useColorModeValue,
-  Kbd,
+  Code,
 } from "@chakra-ui/react"
 import NextLink from "next/link"
 import { motion } from "framer-motion"
@@ -53,13 +53,13 @@ const Cards = ({ project }: Props) => {
               m={{ base: "7", md: "10" }}
               w={{ base: "xs", md: "xl" }}
               display={{ base: "inline-block", md: "flex" }}
-              bg={useColorModeValue("whiteAlpha.800", "blackAlpha.600")}
+              bg={useColorModeValue("#f8f5f1", "whiteAlpha.50")}
               boxShadow="lg"
               whileHover={{ y: -7 }}
             >
               <Box
                 key={i}
-                textAlign={{ base: "center", md: "right" }}
+                textAlign={{ base: "center", md: "left" }}
                 boxSize="xsm"
                 mb={{ base: 2, md: 1 }}
               >
@@ -72,31 +72,32 @@ const Cards = ({ project }: Props) => {
                   alt={val.name}
                 />
                 <LinkOverlay href={`/projects/${i}`}>
-                  <Text fontSize="xs">{val.create}</Text>
-                  <Text fontSize="lg" textAlign="center" pt="3">
+                  {/* <Text fontSize="xs">{val.create}</Text> */}
+                  <Text fontSize="lg" ml={4} textAlign={{md:"left" , base:"center"}} pt="3">
                     {val.name}
                   </Text>
                   <Text
                     fontSize="sm"
                     p="3"
                     align={{ base: "center", md: "right" }}
+                    mt={{ base: "none", md: "2" }}
                   >
                     {val.description}
                   </Text>
 
                   <Box
                     mt={{ base: 0, md: 14 }}
-                    display={{ base: "inline-block", md: "block" }}
+                    display={{ base: "inline-block", md: "flex" }}
                   >
                     {val.fwork.map((items, key) => {
                       return (
-                        <Kbd
-                          m={{ base: "1px", md: "4px" }}
+                        <Code
+                          m={{ base: "4px", md: "7px" }}
                           key={key}
                           fontSize="10px"
                         >
                           {items}
-                        </Kbd>
+                        </Code>
                       )
                     })}
                   </Box>
