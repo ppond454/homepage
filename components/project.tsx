@@ -14,21 +14,10 @@ import {
 } from "@chakra-ui/react"
 
 import Cards from "../containers/cards"
+import { Props } from "../type/projectType"
 
-interface Props {
-  project: {
-    name: string
-    description: string
-    fwork: string[]
-    create: string
-    source: string
-    demo: string
-    pic: string
-  }[]
-}
-
-const Project = ({project}: Props) => {
-
+const Project = ({ project }: Props) => {
+  
   return (
     <>
       <Box align="center">

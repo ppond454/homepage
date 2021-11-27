@@ -23,7 +23,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "theme/theme.jsx", "containers/toggle.jsx", "theme/chakra.tsx", "theme/theme.js"  ],
+, "theme/theme.jsx", "containers/toggle.jsx", "theme/chakra.tsx", "theme/theme.js", "config/firebase.ts", "function/index.jsx"  ],
   "exclude": [
     "node_modules"
   ]

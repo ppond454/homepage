@@ -1,10 +1,27 @@
+import { GetStaticProps } from "next"
 import { Box, Container, Heading, Text, Flex, Image } from "@chakra-ui/react"
+
+import { getData } from "../../function"
+import { Props } from "../../type/projectType"
 import Motions from "../../containers/motions/motions"
 import HeadTitle from "../../containers/layout/headTitle"
 
-interface Props {}
 
-const Index = (props: Props) => {
+export const getStaticProps: GetStaticProps = async (context) => {
+  const project  = await getData() 
+  return {
+    props: {
+      project,
+    },
+  }
+}
+
+
+const Index = ({project}: Props) => {
+
+  console.log(project);
+  
+
   return (
     
     <Motions>
