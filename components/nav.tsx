@@ -82,6 +82,7 @@ const nav = (props: Props) => {
             Github
             <ExternalLinkIcon />
           </Link>
+          <ItemLink href="/contact">Contact</ItemLink>
           {/* <Spacer  /> */}
         </Stack>
 
@@ -99,6 +100,9 @@ const nav = (props: Props) => {
               <MenuList>
                 <NextLink href="/projects">
                   <MenuItem as={Link}>Projects</MenuItem>
+                </NextLink>
+                <NextLink href="/contact">
+                  <MenuItem as={Link}>Contact</MenuItem>
                 </NextLink>
                 <MenuItem as={Link} href="https://github.com/ppond.454">
                   Github

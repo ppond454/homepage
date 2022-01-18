@@ -22,7 +22,7 @@ const Intro = (props: Props) => {
           textAlign="center"
           // color="#565656"
         >
-          Hi ! I&apos;m very interesting a Frontend developer
+          Hi ! I&apos;m very interested in Frontend developer
         </Text>
       </Box>
       <Flex>

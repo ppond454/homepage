@@ -27,7 +27,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     },
   }
 }
-const Home = ({ skill, detail, project }: Props) => {
+const index = ({ skill, detail, project }: Props) => {
 
   return (
     <Motions>
@@ -39,4 +39,4 @@ const Home = ({ skill, detail, project }: Props) => {
   )
 }
 
-export default Home
+export default index
