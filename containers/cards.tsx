@@ -106,6 +106,7 @@ const Cards = ({ project }: Props) => {
           </NextLink>
         )
       })}
+
     </>
   )
 }

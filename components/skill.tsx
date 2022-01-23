@@ -8,6 +8,7 @@ import {
   Box,
   Link,
   useColorModeValue,
+  Code
 } from "@chakra-ui/react"
 import { motion } from "framer-motion"
 
@@ -53,7 +54,6 @@ const Skill = ({ skill }: Props) => {
           <Heading fontSize="md" m="5">
             Programming Language
           </Heading>
-
           <Wrap p="5" spacing={{ base: "1rem", md: "1rem" }} justify="center">
             {lang.map((items, i) => {
               return (

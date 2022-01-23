@@ -1,5 +1,5 @@
 import type { NextPage } from "next"
-import { GetStaticProps} from "next"
+import { GetStaticProps } from "next"
 
 import Bio from "../components/bio"
 import Intro from "../components/intro"
@@ -9,26 +9,23 @@ import { skill } from "../components/data/skill"
 import { detail } from "../components/data/detail"
 
 import Motions from "../containers/motions/motions"
-import {Props } from "../type/index"
+import { Props } from "../type/index"
 import { getData } from "../function/index"
-
-
+import { motion } from "framer-motion"
 
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const project  = await getData() 
+  const project = await getData()
 
   return {
     props: {
       skill,
       detail,
       project,
- 
     },
   }
 }
 const index = ({ skill, detail, project }: Props) => {
-
   return (
     <Motions>
       <Intro />
