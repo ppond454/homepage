@@ -13,14 +13,18 @@ import {
   FormLabel,
   Code,
   CodeProps,
+  BoxProps,
+  Spacer,
 } from "@chakra-ui/react"
-import { useState } from "react"
+import { WarningIcon, CheckCircleIcon } from "@chakra-ui/icons"
+import { ChangeEvent, FormEvent, useState } from "react"
 import { ToastContainer, toast } from "react-toastify"
 import { motion } from "framer-motion"
 
 import "react-toastify/dist/ReactToastify.css"
 import HeadTitle from "../../containers/layout/headTitle"
 import Motions from "../../containers/motions/motions"
+import { validatedEmail } from "../../function/index"
 
 interface Props {}
 
@@ -30,7 +34,7 @@ interface IFormInput {
   msg: string
 }
 
-export const MotionCode = motion<CodeProps>(Code)
+const MotionBox = motion<BoxProps>(Box)
 
 export const Index = (props: Props) => {
   const [validateName, setValidName] = useState({
@@ -51,10 +55,41 @@ export const Index = (props: Props) => {
   const [msg, setMsg] = useState<string>("")
   const [load, setLoad] = useState<boolean>(false)
 
-  console.log("out fucn :", validateEmail)
-  console.log(validateEmail)
-  console.log(validateName)
-  console.log(validateMsg)
+  // console.log("out fucn :", validateEmail)
+  // console.log(validateEmail)
+  // console.log(validateName)
+  // console.log(validateMsg)
+
+  const onChangeEmail = (e: ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value)
+    const re = validatedEmail(e.target.value)
+    console.log(re)
+
+    if (e.target.value === "")
+      setValidEmail({
+        msg: "Email is required",
+        error: true,
+      })
+    if (re && e.target.value !== "")
+      setValidEmail({
+        msg: "Email does not exist",
+        error: true,
+      })
+    if (!re && e.target.value !== "")
+      setValidEmail({
+        msg: "your email syntax is correct",
+        error: false,
+      })
+  }
+
+  const onChangeMsg = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    setMsg(e.target.value)
+    // console.log(e.target.value.length)
+
+    if (e.target.value === "")
+      setValidMsg({ error: true, msg: "Message is required" })
+    else setValidMsg({ error: false, msg: "good" })
+  }
 
   const handleSubmit = () => {
     setLoad(true)
@@ -74,17 +109,15 @@ export const Index = (props: Props) => {
         msg: "Message is required",
       })
 
-    const re = email.match(
-      /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-    )
+    const re = validatedEmail(email)
 
-    if (re === null && email !== "")
+    if (re && email !== "")
       setValidEmail({
         error: true,
         msg: "Email does not exist",
       })
 
-    if (name && email && msg && re !== null) {
+    if (name && email && msg && !re) {
       console.log(name, email, msg)
       toast("your message has been sent ✅")
       setEmail("")
@@ -109,11 +142,30 @@ export const Index = (props: Props) => {
         </Heading>
         <Container w="80%" mb="200" mx="auto">
           <FormControl isRequired>
-            <FormLabel htmlFor="name">Name</FormLabel>
+            <Box display="flex">
+              <FormLabel htmlFor="name">Name</FormLabel>
+              <Spacer />
+              {validateName.msg && validateName.error && (
+                <MotionBox
+                  bgColor="red.100"
+                  p="5px"
+                  fontSize="14px"
+                  rounded="xl"
+                  display={{ base: "flex", md: "none" }}
+                  ml="20px"
+                  initial={{ rotateX: 180, opacity: 0 }}
+                  animate={{ rotateX: 0, opacity: 1 }}
+                  color="red.300"
+                >
+                  <WarningIcon m="2px" /> {validateName.msg}
+                </MotionBox>
+              )}
+            </Box>
+
             <Box>
               <Input
                 resize="none"
-                w="250px"
+                w={{ md: "250px", base: "100%" }}
                 placeholder="Siritep Tongdoung"
                 mb="5"
                 type="name"
@@ -127,53 +179,100 @@ export const Index = (props: Props) => {
                 isInvalid={validateName.error}
               />
               {validateName.msg && validateName.error && (
-                <MotionCode
+                <MotionBox
+                  bgColor="red.100"
+                  p="5px"
+                  fontSize="14px"
+                  rounded="xl"
                   ml="20px"
+                  color="red.300"
                   display={{ base: "none", md: "inline-flex" }}
-                  colorScheme="red"
                   initial={{ rotateX: 180, opacity: 0 }}
                   animate={{ rotateX: 0, opacity: 1 }}
                 >
-                  ❌ {validateName.msg}
-                </MotionCode>
+                  <WarningIcon m="2px" /> {validateName.msg}
+                </MotionBox>
               )}
             </Box>
 
-            <FormLabel htmlFor="email">Email</FormLabel>
+            <Box display="flex">
+              <FormLabel htmlFor="email">Email</FormLabel>
+              <Spacer />
+              {validateEmail.msg && validateEmail.error && (
+                <MotionBox
+                  bgColor="red.100"
+                  p="5px"
+                  fontSize="14px"
+                  rounded="xl"
+                  display={{ base: "flex", md: "none" }}
+                  ml="20px"
+                  initial={{ rotateX: 180, opacity: 0 }}
+                  animate={{ rotateX: 0, opacity: 1 }}
+                  color="red.300"
+                >
+                  <WarningIcon m="2px" /> {validateEmail.msg}
+                </MotionBox>
+              )}
+              {validateEmail.msg && !validateEmail.error && (
+                <MotionBox
+                  bgColor="green.100"
+                  p="5px"
+                  fontSize="14px"
+                  rounded="xl"
+                  ml="20px"
+                  color="green.400"
+                  display={{ base: "flex", md: "none" }}
+                  initial={{ rotateX: 180, opacity: 0 }}
+                  animate={{ rotateX: 0, opacity: 1 }}
+                >
+                  <CheckCircleIcon m="3px" />
+                  {validateEmail.msg}
+                </MotionBox>
+              )}
+            </Box>
             <Box>
               <Input
                 resize="none"
-                w="250px"
+                w={{ md: "250px", base: "100%" }}
                 mb="5"
                 placeholder="example.123@email.com"
                 type="email"
                 value={email}
-                onChange={(e) => {
-                  setEmail(e.target.value)
-                  if (e.target.value === "")
-                    setValidEmail({
-                      msg: "Email is required",
-                      error: true,
-                    })
-                  else
-                    setValidEmail({
-                      msg: "",
-                      error: false,
-                    })
-                }}
+                onChange={onChangeEmail}
                 isInvalid={validateEmail.error}
               />
 
-              {validateEmail.msg && (
-                <MotionCode
-                  display={{ base: "none", md: "inline-flex" }}
+              {validateEmail.msg && validateEmail.error && (
+                <MotionBox
+                  bgColor="red.100"
+                  p="5px"
+                  fontSize="14px"
+                  rounded="xl"
                   ml="20px"
-                  colorScheme="red"
+                  color="red.300"
+                  display={{ base: "none", md: "inline-flex" }}
                   initial={{ rotateX: 180, opacity: 0 }}
                   animate={{ rotateX: 0, opacity: 1 }}
                 >
-                  ❌ {validateEmail.msg}
-                </MotionCode>
+                  <WarningIcon m="2px" />
+                  {validateEmail.msg}
+                </MotionBox>
+              )}
+              {validateEmail.msg && !validateEmail.error && (
+                <MotionBox
+                  bgColor="green.100"
+                  p="5px"
+                  fontSize="14px"
+                  rounded="xl"
+                  ml="20px"
+                  color="green.400"
+                  display={{ base: "none", md: "inline-flex" }}
+                  initial={{ rotateX: 180, opacity: 0 }}
+                  animate={{ rotateX: 0, opacity: 1 }}
+                >
+                  <CheckCircleIcon m="3px" />
+                  {validateEmail.msg}
+                </MotionBox>
               )}
             </Box>
 
@@ -184,26 +283,44 @@ export const Index = (props: Props) => {
                 h="230px"
                 placeholder="Text there"
                 value={msg}
-                onChange={(e) => {
-                  setMsg(e.target.value)
-                  if (e.target.value === "")
-                    setValidMsg({ error: true, msg: "Message is required" })
-                  else setValidMsg({ error: false, msg: "" })
-                }}
+                onChange={onChangeMsg}
                 isInvalid={validateMsg.error}
               />
-              {validateMsg.msg && validateMsg.error ? (
-                <MotionCode
-                  mt="20px"
-                  colorScheme="red"
+              {validateMsg.msg && validateMsg.error && (
+                <MotionBox
+                  bgColor="red.100"
+                  p="5px"
+                  fontSize="14px"
+                  rounded="xl"
+                  display="flex"
+                  color="red.300"
+                  w="10rem"
+                  justifyContent="center"
                   initial={{ rotateX: 180, opacity: 0 }}
                   animate={{ rotateX: 0, opacity: 1 }}
                 >
-                  ❌ {validateMsg.msg}
-                </MotionCode>
-              ) : (
-                <Box h="22px" mt="20px" />
+                  <WarningIcon m="2px" />
+                  {validateMsg.msg}
+                </MotionBox>
               )}
+              {validateMsg.msg && !validateMsg.error && (
+                <MotionBox
+                  bgColor="green.100"
+                  p="5px"
+                  fontSize="14px"
+                  rounded="xl"
+                  display="flex"
+                  color="green.400"
+                  w="10rem"
+                  justifyContent="center"
+                  initial={{ rotateX: 180, opacity: 0 }}
+                  animate={{ rotateX: 0, opacity: 1 }}
+                >
+                  <CheckCircleIcon m="3px" />
+                  {validateMsg.msg}
+                </MotionBox>
+              )}
+              {!validateMsg.msg && !validateMsg.error && <Box h="31" />}
             </Box>
             <Button
               mt="6"
