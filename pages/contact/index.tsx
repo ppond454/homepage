@@ -17,7 +17,7 @@ import {
   Spacer,
 } from "@chakra-ui/react"
 import { WarningIcon, CheckCircleIcon } from "@chakra-ui/icons"
-import { ChangeEvent, FormEvent, useState } from "react"
+import { ChangeEvent, ChangeEventHandler, FormEvent, useState } from "react"
 import { ToastContainer, toast } from "react-toastify"
 import { motion } from "framer-motion"
 
@@ -82,6 +82,15 @@ export const Index = (props: Props) => {
       })
   }
 
+  const onChangeName = (e: ChangeEvent<HTMLInputElement>) => {
+    setName(e.target.value)
+    if (e.target.value === "")
+      setValidName({ error: true, msg: "Name is required" })
+    else setValidName({ error: false, msg: "good" })
+    if (e.target.value.length >= 20)
+      setValidName({ error: true, msg: "Name must be lower 20 charecters" })
+  }
+
   const onChangeMsg = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setMsg(e.target.value)
     // console.log(e.target.value.length)
@@ -120,9 +129,7 @@ export const Index = (props: Props) => {
     if (name && email && msg && !re) {
       console.log(name, email, msg)
       toast("your message has been sent ✅")
-      setEmail("")
-      setMsg("")
-      setName("")
+      handleReset()
     }
 
     setLoad(false)
@@ -132,6 +139,10 @@ export const Index = (props: Props) => {
     setEmail("")
     setMsg("")
     setName("")
+    setValidEmail({msg:"" , error:false})
+    setValidMsg({msg:"" , error:false})
+    setValidName({msg:"" , error:false})
+
   }
 
   return (
@@ -160,6 +171,21 @@ export const Index = (props: Props) => {
                   <WarningIcon m="2px" /> {validateName.msg}
                 </MotionBox>
               )}
+              {validateName.msg && !validateName.error && (
+                <MotionBox
+                  bgColor="green.100"
+                  p="5px"
+                  fontSize="14px"
+                  rounded="xl"
+                  ml="20px"
+                  color="green.400"
+                  display={{ base: "flex", md: "none" }}
+                  initial={{ rotateX: 180, opacity: 0 }}
+                  animate={{ rotateX: 0, opacity: 1 }}
+                >
+                  <CheckCircleIcon m="2px" /> {validateName.msg}
+                </MotionBox>
+              )}
             </Box>
 
             <Box>
@@ -170,12 +196,7 @@ export const Index = (props: Props) => {
                 mb="5"
                 type="name"
                 value={name}
-                onChange={(e) => {
-                  setName(e.target.value)
-                  if (e.target.value === "")
-                    setValidName({ error: true, msg: "Name is required" })
-                  else setValidName({ error: false, msg: "" })
-                }}
+                onChange={onChangeName}
                 isInvalid={validateName.error}
               />
               {validateName.msg && validateName.error && (
@@ -191,6 +212,21 @@ export const Index = (props: Props) => {
                   animate={{ rotateX: 0, opacity: 1 }}
                 >
                   <WarningIcon m="2px" /> {validateName.msg}
+                </MotionBox>
+              )}
+              {validateName.msg && !validateName.error && (
+                <MotionBox
+                  bgColor="green.100"
+                  p="5px"
+                  fontSize="14px"
+                  rounded="xl"
+                  ml="20px"
+                  color="green.400"
+                  display={{ base: "none", md: "inline-flex" }}
+                  initial={{ rotateX: 180, opacity: 0 }}
+                  animate={{ rotateX: 0, opacity: 1 }}
+                >
+                  <CheckCircleIcon m="2px" /> {validateName.msg}
                 </MotionBox>
               )}
             </Box>
