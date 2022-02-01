@@ -383,7 +383,7 @@ const Form = () => {
         <Reaptcha 
           onExpire={onExpire}
           onVerify={onVerify}
-          sitekey="6LcDZkoeAAAAALO16aCe0P3AjrPA4xfGmJu9B1m3"
+          sitekey={process.env.NEXT_PUBLIC_KEY_CAP as string}
         />
       </Container>
       <ToastContainer />
