@@ -20,6 +20,7 @@ import { motion } from "framer-motion"
 import { WarningIcon, CheckCircleIcon } from "@chakra-ui/icons"
 import { ChangeEvent, ChangeEventHandler, FormEvent, useState } from "react"
 import { ToastContainer, toast } from "react-toastify"
+import Reaptcha from "reaptcha"
 
 import { validatedEmail } from "../function/index"
 
@@ -43,11 +44,19 @@ const Form = () => {
   const [email, setEmail] = useState<string>("")
   const [msg, setMsg] = useState<string>("")
   const [load, setLoad] = useState<boolean>(false)
+  const [verifyCap, setVerifyCap] = useState(true)
 
   // console.log("out fucn :", validateEmail)
   // console.log(validateEmail)
   // console.log(validateName)
   // console.log(validateMsg)
+
+  const onVerify = () => {
+    return setVerifyCap(false)
+  }
+  const onExpire = () => {
+    return setVerifyCap(true)
+  }
 
   const onChangeEmail = (e: ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value)
@@ -355,6 +364,7 @@ const Form = () => {
             _hover={{
               bgColor: "teal.100",
             }}
+            isDisabled={verifyCap}
           >
             Send
           </Button>
@@ -370,6 +380,11 @@ const Form = () => {
             Reset
           </Button>
         </FormControl>
+        <Reaptcha 
+          onExpire={onExpire}
+          onVerify={onVerify}
+          sitekey="6LcDZkoeAAAAALO16aCe0P3AjrPA4xfGmJu9B1m3"
+        />
       </Container>
       <ToastContainer />
     </>

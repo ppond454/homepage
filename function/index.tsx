@@ -26,3 +26,5 @@ export const validatedEmail = (email: string) => {
   if (re === null) return true
   else return false
 }
+
+
