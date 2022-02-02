@@ -147,7 +147,7 @@ const Form = () => {
       <Heading pt="20" pb="10" textAlign="center">
         Contact
       </Heading>
-      <Container w="80%" mb="200" mx="auto">
+      <Container w="80%" mb="200" mx="auto"  >
         <FormControl isRequired>
           <Box display="flex">
             <FormLabel htmlFor="name">Name</FormLabel>
@@ -380,7 +380,7 @@ const Form = () => {
             Reset
           </Button>
         </FormControl>
-        <Reaptcha 
+        <Reaptcha
           onExpire={onExpire}
           onVerify={onVerify}
           sitekey={process.env.NEXT_PUBLIC_KEY_CAP as string}

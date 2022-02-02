@@ -22,13 +22,9 @@ import { motion } from "framer-motion"
 
 const BoxMotion = motion(Box)
 
-
 interface Props {}
 
 const nav = (props: Props) => {
-
- 
-
   const colorNav: string = useColorModeValue("whiteAlpha.500", "blackAlpha.200")
 
   return (
@@ -44,7 +40,6 @@ const nav = (props: Props) => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5, type: "easeInOut" }}
-      
     >
       <Container
         p={{ base: "3", md: "0" }}
@@ -77,12 +72,12 @@ const nav = (props: Props) => {
           mt={{ base: 4, nmd: 0 }}
           spacing="4"
         >
-          <ItemLink href="/projects">Projects</ItemLink>
+          <ItemLink href="/contact">Contact</ItemLink>
           <Link isExternal href="https://github.com/ppond454" borderRadius={5}>
             Github
             <ExternalLinkIcon />
           </Link>
-          <ItemLink href="/contact">Contact</ItemLink>
+
           {/* <Spacer  /> */}
         </Stack>
 
@@ -98,9 +93,6 @@ const nav = (props: Props) => {
                 aria-label="Options"
               />
               <MenuList>
-                <NextLink href="/projects">
-                  <MenuItem as={Link}>Projects</MenuItem>
-                </NextLink>
                 <NextLink href="/contact">
                   <MenuItem as={Link}>Contact</MenuItem>
                 </NextLink>

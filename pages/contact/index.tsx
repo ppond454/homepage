@@ -24,7 +24,7 @@ import { motion } from "framer-motion"
 import "react-toastify/dist/ReactToastify.css"
 import HeadTitle from "../../containers/layout/headTitle"
 import Motions from "../../containers/motions/motions"
-import Form from "../../containers/form"
+import Form from "../../components/form"
 
 interface Props {}
 
