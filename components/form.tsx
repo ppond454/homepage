@@ -22,6 +22,7 @@ import { ChangeEvent, ChangeEventHandler, FormEvent, useState } from "react"
 import { ToastContainer, toast } from "react-toastify"
 import Reaptcha from "reaptcha"
 
+import { sentEmail } from "../function/index"
 import { validatedEmail } from "../function/index"
 
 const MotionBox = motion<BoxProps>(Box)
@@ -126,6 +127,7 @@ const Form = () => {
 
     if (name && email && msg && !re) {
       console.log(name, email, msg)
+      sentEmail(email, name, msg)
       toast("your message has been sent ✅")
       handleReset()
     }
@@ -147,7 +149,7 @@ const Form = () => {
       <Heading pt="20" pb="10" textAlign="center">
         Contact
       </Heading>
-      <Container w="80%" mb="200" mx="auto"  >
+      <Container w="80%" mb="200" mx="auto">
         <FormControl isRequired>
           <Box display="flex">
             <FormLabel htmlFor="name">Name</FormLabel>
