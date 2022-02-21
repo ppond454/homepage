@@ -1,5 +1,6 @@
 export interface Props {
   project: Project[]
+  count : number
 }
 export interface Project {
   description: string
@@ -10,6 +11,7 @@ export interface Project {
   pic: string
   name: string
   id: number
+  method: string
 }
 export interface createType {
   _seconds: Date

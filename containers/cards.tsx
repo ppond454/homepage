@@ -22,7 +22,7 @@ import {
 } from "@chakra-ui/react"
 import NextLink from "next/link"
 import { motion } from "framer-motion"
-import {Props} from "../type/projectType"
+import {Props} from "../type/projectCardType"
 
 const BoxMotion = motion(LinkBox)
 const ImgMotion = motion(Image)
