@@ -34,7 +34,6 @@ import Motions from "../../containers/motions/motions"
 import { getData, getDataPage } from "../../function/index"
 import { Project, Props } from "../../type/projectType"
 import { Params } from "next/dist/server/router"
-import path from "path"
 
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
   const project: Project[] = await getData()
@@ -96,39 +95,45 @@ export default ({ project, count }: Props) => {
 
             <Box maxW={600} my="20px" shadow="lg">
               <NextImg
-                src={project[0].pic}
+                src={ project[0].pic }
                 alt={project[0].name}
                 width={1228}
                 height={903}
                 layout="responsive"
-                priority
                 placeholder="blur"
+                priority={true}
+                loading="eager"
                 blurDataURL={project[0].pic}
               />
             </Box>
 
             <Box mx={{ base: "none", md: "10%" }} maxW={650}>
-              <Text textAlign="left">{project[0].description}</Text>
+              <Text textAlign="left">{`     ${project[0].description}`}</Text>
               <Text textAlign="left">{`Method : ${project[0].method}`}</Text>
 
               <List align="left">
-                <ListItem>
+                <ListItem >
                   <Link isExternal href={project[0].demo}>
                     Live Demo <ExternalLinkIcon />
                   </Link>
                 </ListItem>
-                <ListItem>
-                  <Link isExternal href={project[0].source}>
-                    Source Code <ExternalLinkIcon />
-                  </Link>
-                </ListItem>
+                {project[0].source.map((val, i) => {
+                  return (
+                    <ListItem key={i}>
+                      <Link isExternal key={i} href={ val as string }>
+                        {i === 0? "Frontend" : "Backend"} Source Code <ExternalLinkIcon />
+                      </Link>
+                    </ListItem>
+                    
+                  )
+                })}
               </List>
             </Box>
             <Box
               mt={{ base: 0, md: 14 }}
               display={{ base: "inline-block", md: "flex" }}
             >
-              {/* {project[0].fwork.map((items, key) => {
+              {project[0].fwork.map((items, key) => {
                 return (
                   <Code
                     m={{ base: "4px", md: "7px" }}
@@ -138,7 +143,7 @@ export default ({ project, count }: Props) => {
                     {items}
                   </Code>
                 )
-              })} */}
+              })}
             </Box>
             <Box>
               {Number(router.query.id) !== 1 && (
@@ -154,7 +159,7 @@ export default ({ project, count }: Props) => {
               )}
               {[...Array(count)].map((val, i) => {
                 return (
-                  <CustomNavPage href={`/projects/${i + 1}`}>
+                  <CustomNavPage key={i} href={`/projects/${i + 1}`}>
                     {i + 1}
                   </CustomNavPage>
                 )

@@ -24,7 +24,7 @@ export interface Props {
     create: createType
     fwork: Object[]
     demo: string
-    source: string
+    source: Object[]
     pic: string
     name: string
     id: number

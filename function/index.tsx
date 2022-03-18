@@ -1,5 +1,6 @@
 import emailjs from "@emailjs/browser"
 
+
 export const getData = async () => {
   try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/project`)

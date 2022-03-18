@@ -22,15 +22,12 @@ import {
 } from "@chakra-ui/react"
 import NextLink from "next/link"
 import { motion } from "framer-motion"
-import {Props} from "../type/projectCardType"
+import { Props } from "../type/projectCardType"
 
 const BoxMotion = motion(LinkBox)
 const ImgMotion = motion(Image)
 
-
 const Cards = ({ project }: Props) => {
-
-
   return (
     <>
       {project.map((val) => {
@@ -50,8 +47,10 @@ const Cards = ({ project }: Props) => {
             >
               <Box
                 textAlign={{ base: "center", md: "left" }}
+                justifyContent="space-between"
                 boxSize="xsm"
                 mb={{ base: 2, md: 1 }}
+                height={{ md :230, base:"auto"}}
               >
                 <ImgMotion
                   display={{ md: "none", base: "inline-block" }}
@@ -63,7 +62,12 @@ const Cards = ({ project }: Props) => {
                 />
                 <LinkOverlay href={`/projects/${val.id}`}>
                   {/* <Text fontSize="xs">{val.create}</Text> */}
-                  <Text fontSize="lg" ml={4} textAlign={{md:"left" , base:"center"}} pt="3">
+                  <Text
+                    fontSize="lg"
+                    ml={4}
+                    textAlign={{ md: "left", base: "center" }}
+                    pt="3"
+                  >
                     {val.name}
                   </Text>
                   <Text
@@ -72,7 +76,7 @@ const Cards = ({ project }: Props) => {
                     align={{ base: "center", md: "right" }}
                     mt={{ base: "none", md: "2" }}
                   >
-                    {val.description}
+                    {`${val.description.substring(0,99)}...`}
                   </Text>
 
                   <Box
@@ -100,13 +104,12 @@ const Cards = ({ project }: Props) => {
                 src={val.pic}
                 roundedRight="md"
                 boxShadow="inner"
-                w="40%" 
+                w="40%"
               />
             </BoxMotion>
           </NextLink>
         )
       })}
-
     </>
   )
 }
