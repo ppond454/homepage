@@ -20,6 +20,7 @@ import {
   Code,
   Button,
   Avatar,
+  useColorModeValue,
 } from "@chakra-ui/react"
 import {
   ExternalLinkIcon,
@@ -75,8 +76,9 @@ export default ({ project, count }: Props) => {
           <Box
             p="20px"
             mx={{ base: "15px", md: "15%" }}
-            bgColor="whiteAlpha.700"
+            bg={useColorModeValue("#f8f5f1", "whiteAlpha.50")}
             shadow="xl"
+            borderRadius={10}
           >
             <Flex
               align="center"
@@ -95,24 +97,30 @@ export default ({ project, count }: Props) => {
 
             <Box maxW={600} my="20px" shadow="lg">
               <NextImg
-                src={ project[0].pic }
+                src={project[0].pic}
                 alt={project[0].name}
                 width={1228}
                 height={903}
                 layout="responsive"
                 placeholder="blur"
-                priority={true}
-                loading="eager"
+                loading="lazy"
                 blurDataURL={project[0].pic}
               />
             </Box>
 
-            <Box mx={{ base: "none", md: "10%" }} maxW={650}>
-              <Text textAlign="left">{`     ${project[0].description}`}</Text>
-              <Text textAlign="left">{`Method : ${project[0].method}`}</Text>
+            <Box textAlign="left" mx={{ base: "none", md: "10%" }} maxW={650}>
+              <Heading fontSize="2xl" as="u">
+                Information
+              </Heading>
+
+              <Text my="2">{`${project[0].description}`}</Text>
+              <Heading fontSize="2xl" as="u">
+                Method
+              </Heading>
+              <Text my="2">{`${project[0].method}`}</Text>
 
               <List align="left">
-                <ListItem >
+                <ListItem>
                   <Link isExternal href={project[0].demo}>
                     Live Demo <ExternalLinkIcon />
                   </Link>
@@ -120,25 +128,22 @@ export default ({ project, count }: Props) => {
                 {project[0].source.map((val, i) => {
                   return (
                     <ListItem key={i}>
-                      <Link isExternal key={i} href={ val as string }>
-                        {i === 0? "Frontend" : "Backend"} Source Code <ExternalLinkIcon />
+                      <Link isExternal key={i} href={val as string}>
+                        {i === 0 ? "Frontend" : "Backend"} Source Code{" "}
+                        <ExternalLinkIcon />
                       </Link>
                     </ListItem>
-                    
                   )
                 })}
               </List>
             </Box>
-            <Box
-              mt={{ base: 0, md: 14 }}
-              display={{ base: "inline-block", md: "flex" }}
-            >
+            <Box my={4} display="inline-block">
               {project[0].fwork.map((items, key) => {
                 return (
                   <Code
                     m={{ base: "4px", md: "7px" }}
                     key={key}
-                    fontSize="10px"
+                    fontSize="12px"
                   >
                     {items}
                   </Code>
