@@ -9,16 +9,17 @@ const variants: any = {
 
 interface Props {
   children: ReactNode
+  duratime: number
 }
 
-const Motions = ({ children }: Props) => {
+const Motions = ({ children , duratime }: Props) => {
   return (
     <motion.article
       initial="hidden"
       animate="enter"
       exit="exit"
       variants={variants}
-      transition={{ duration: 1, type: "easeInOut" }}
+      transition={{ duration: duratime, type: "easeInOut" }}
       style={{ position: "relative" }}
     >
       {children}

@@ -13,7 +13,6 @@ import { Props } from "../type/index"
 import { getData } from "../function/index"
 import { motion } from "framer-motion"
 
-
 export const getStaticProps: GetStaticProps = async (context) => {
   const project = await getData()
 
@@ -27,12 +26,18 @@ export const getStaticProps: GetStaticProps = async (context) => {
 }
 const index = ({ skill, detail, project }: Props) => {
   return (
-    <Motions>
-      <Intro />
-      <Bio detail={detail} />
-      <Skill skill={skill} />
-      <Project project={project} />
-    </Motions>
+    <>
+      <Motions duratime={1}>
+        <Intro />
+      </Motions>
+      <Motions duratime={2}>
+        <Bio detail={detail} />
+      </Motions>
+      <Motions duratime={3}>
+        <Skill skill={skill} />
+      </Motions>
+        <Project project={project} />
+    </>
   )
 }
 

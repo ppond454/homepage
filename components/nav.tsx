@@ -72,6 +72,7 @@ const nav = (props: Props) => {
           mt={{ base: 4, nmd: 0 }}
           spacing="4"
         >
+          
           <ItemLink href="/contact">Contact</ItemLink>
           <Link isExternal href="https://github.com/ppond454" borderRadius={5}>
             Github

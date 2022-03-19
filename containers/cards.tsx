@@ -24,6 +24,9 @@ import NextLink from "next/link"
 import { motion } from "framer-motion"
 import { Props } from "../type/projectCardType"
 
+
+import Motions from "../containers/motions/motions"
+
 const BoxMotion = motion(LinkBox)
 const ImgMotion = motion(Image)
 
@@ -32,7 +35,8 @@ const Cards = ({ project }: Props) => {
     <>
       {project.map((val) => {
         return (
-          <NextLink key={val.id} href={`/projects/${val.id}`} passHref>
+          <Motions key={val.id} duratime={val.id} >
+          <NextLink  href={`/projects/${val.id}`} passHref>
             <BoxMotion
               key={val.id}
               borderWidth="1px"
@@ -108,6 +112,7 @@ const Cards = ({ project }: Props) => {
               />
             </BoxMotion>
           </NextLink>
+          </Motions>
         )
       })}
     </>

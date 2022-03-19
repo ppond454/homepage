@@ -15,12 +15,13 @@ import {
 
 import Cards from "../containers/cards"
 import { Props } from "../type/projectCardType"
+import Motions from "../containers/motions/motions"
 
 const Project = ({ project  }: Props) => {
   
   return (
-    <>
-      <Box align="center">
+    <Motions duratime={1}>
+      <Box align="center" id="project-sec">
         <Container textAlign="left">
           <Heading size="lg" variant="section-title">
             Project
@@ -28,7 +29,7 @@ const Project = ({ project  }: Props) => {
         </Container>
         <Cards project={project} />
       </Box>
-    </>
+    </Motions>
   )
 }
 
