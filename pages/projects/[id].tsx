@@ -90,72 +90,69 @@ export default ({ project, count }: Props) => {
             </Flex>
           </Motions>
           <Motions duratime={1.3}>
+            <Heading>{project[0].name}</Heading>
 
-          <Heading>{project[0].name}</Heading>
-
-          <Box maxW={600} my="20px" shadow="lg">
-            <NextImg
-              // src={project[0].pic}
-              src={`/images/projects/project${project[0].id}.webp`}
-              alt={project[0].name}
-              width={1228}
-              height={903}
-              layout="responsive"
-              placeholder="blur"
-              blurDataURL={`/images/projects/project${project[0].id}.webp`}
-            />
-          </Box>
+            <Box maxW={600} my="20px" shadow="lg">
+              <NextImg
+                src={`${project[0].pic}`}
+                alt={project[0].name}
+                width={1228}
+                height={903}
+                layout="responsive"
+                placeholder="blur"
+                blurDataURL={`${project[0].pic}`}
+              />
+            </Box>
           </Motions>
 
           <Box textAlign="left" mx={{ base: "none", md: "10%" }} maxW={650}>
-          <Motions duratime={1.6}>
+            <Motions duratime={1.6}>
+              <Heading fontSize="2xl" as="u">
+                Information
+              </Heading>
 
-            <Heading fontSize="2xl" as="u">
-              Information
-            </Heading>
-
-            <Text my="2">{`${project[0].description}`}</Text>
-          </Motions>
-          <Motions duratime={1.6}>
-
-            <Heading fontSize="2xl" as="u">
-              Method
-            </Heading>
-            <Text my="2">{`${project[0].method}`}</Text>
+              <Text my="2">{`${project[0].description}`}</Text>
+            </Motions>
+            <Motions duratime={1.6}>
+              <Heading fontSize="2xl" as="u">
+                Method
+              </Heading>
+              <Text my="2">{`${project[0].method}`}</Text>
             </Motions>
             <Motions duratime={1.9}>
-
-            <List align="left">
-              <ListItem>
-                <Link isExternal href={project[0].demo}>
-                  Live Demo <ExternalLinkIcon />
-                </Link>
-              </ListItem>
-              {project[0].source.map((val, i) => {
-                return (
-                  <ListItem key={i}>
-                    <Link isExternal key={i} href={val as string}>
-                      {i === 0 ? "Frontend" : "Backend"} Source Code{" "}
-                      <ExternalLinkIcon />
-                    </Link>
-                  </ListItem>
-                )
-              })}
-            </List>
+              <List align="left">
+                <ListItem>
+                  <Link isExternal href={project[0].demo}>
+                    Live Demo <ExternalLinkIcon />
+                  </Link>
+                </ListItem>
+                {project[0].source.map((val, i) => {
+                  return (
+                    <ListItem key={i}>
+                      <Link isExternal key={i} href={val as string}>
+                        {i === 0 ? "Frontend" : "Backend"} Source Code{" "}
+                        <ExternalLinkIcon />
+                      </Link>
+                    </ListItem>
+                  )
+                })}
+              </List>
             </Motions>
-
           </Box>
           <Motions duratime={2.2}>
-
-          <Box my={4} display="inline-block">
-            {project[0].fwork.map((items, key) => {
-              return (
-                <Code m={{ base: "4px", md: "7px" }} key={key} fontSize="12px">
-                  {items}
-                </Code>
-              )
-            })}
-          </Box>
+            <Box my={4} display="inline-block">
+              {project[0].fwork.map((items, key) => {
+                return (
+                  <Code
+                    m={{ base: "4px", md: "7px" }}
+                    key={key}
+                    fontSize="12px"
+                  >
+                    {items}
+                  </Code>
+                )
+              })}
+            </Box>
           </Motions>
 
           <Box display="flex">
