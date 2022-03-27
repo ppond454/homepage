@@ -8,7 +8,7 @@ import {
   Box,
   Link,
   useColorModeValue,
-  Code
+  Code,
 } from "@chakra-ui/react"
 import { motion } from "framer-motion"
 
@@ -61,9 +61,9 @@ const Skill = ({ skill }: Props) => {
                   <BoxMotion
                     href={items.link}
                     isExternal
-                    w="5rem"
-                    h="5rem"
-                    p="2"
+                    w="6rem"
+                    h="7rem"
+                    p="1"
                     key={i}
                     borderRadius={20}
                     bg="whiteAlpha.600"
@@ -77,7 +77,12 @@ const Skill = ({ skill }: Props) => {
                     whileTap={{ scale: 0.9 }}
                     // onMouseOver={() => setRotate(true)}
                   >
-                    <ImgMotion src={items.logo} alt={items.name} />
+                    <Box borderTopRadius={10}  justifyContent="center" d="flex">
+                      <ImgMotion  src={items.logo} h="80px"  alt={items.name} />
+                    </Box>
+                    <Box p={1} justifyContent="center" >
+                      <Text fontSize={{base:"13" , md:"14"}} >{items.name}</Text>
+                    </Box>
                   </BoxMotion>
                 </WrapItem>
               )
@@ -103,13 +108,13 @@ const Skill = ({ skill }: Props) => {
               return (
                 <WrapItem key={i}>
                   <BoxMotion
+                    justify="center"
                     href={items.link}
                     isExternal
-                    w="5rem"
-                    h="5rem"
-                    p="2"
+                    w="6rem"
+                    h="7rem"
                     key={i}
-                    borderRadius={20}
+                    borderRadius={10}
                     bg="whiteAlpha.600"
                     textAlign="center"
                     style={{
@@ -119,10 +124,14 @@ const Skill = ({ skill }: Props) => {
                     boxShadow="lg"
                     whileHover={{ scale: 1.1, y: -7 }}
                     whileTap={{ scale: 0.9 }}
+                    
                     // onMouseOver={() => setRotate(true)}
                   >
-                    <Box>
-                      <ImgMotion src={items.logo} alt={items.name} />
+                    <Box borderTopRadius={10}  justifyContent="center" d="flex">
+                      <ImgMotion m={1} src={items.logo} h="80px"  alt={items.name} />
+                    </Box>
+                    <Box p={1} justifyContent="center" >
+                    <Text fontSize={{base:"13" , md:"14"}} >{items.name}</Text>
                     </Box>
                   </BoxMotion>
                 </WrapItem>

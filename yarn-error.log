@@ -1,20 +1,30 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/bin/yarn add react-hook-form
+  /usr/local/Cellar/node@14/14.19.1/bin/node /usr/local/bin/yarn install
 
 PATH: 
-  /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+  /usr/local/opt/node@14/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/opt/node@14/bin
 
 Yarn version: 
-  1.22.17
+  1.22.18
 
 Node version: 
-  14.18.1
+  14.19.1
 
 Platform: 
   darwin x64
 
 Trace: 
-  Error: EACCES: permission denied, unlink '/Users/lilp/projects/homepage/node_modules/.yarn-integrity'
+  Error: connect ENETUNREACH 104.16.18.35:443 - Local (0.0.0.0:49693)
+      at internalConnect (net.js:934:16)
+      at defaultTriggerAsyncIdScope (internal/async_hooks.js:452:18)
+      at emitLookup (net.js:1077:9)
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:103580:28
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:103489:13
+      at RawTask.module.exports.RawTask.call (/usr/local/lib/node_modules/yarn/lib/cli.js:79577:19)
+      at flush (/usr/local/lib/node_modules/yarn/lib/cli.js:79659:29)
+      at processTicksAndRejections (internal/process/task_queues.js:77:11)
+      at runNextTicks (internal/process/task_queues.js:64:3)
+      at processImmediate (internal/timers.js:437:9)
 
 npm manifest: 
   {
@@ -31,6 +41,8 @@ npm manifest:
       "dependencies": {
           "@chakra-ui/icons": "^1.0.16",
           "@chakra-ui/react": "^1.6.10",
+          "@emailjs/browser": "^3.4.0",
+          "@emotion/core": "^11.0.0",
           "@emotion/react": "^11",
           "@emotion/styled": "^11",
           "@fontsource/nunito": "^4.5.0",
@@ -41,8 +53,8 @@ npm manifest:
           "next": "12.0.1",
           "react": "17.0.2",
           "react-dom": "17.0.2",
-          "react-hook-form": "^7.24.2",
-          "react-toastify": "^8.1.0"
+          "react-toastify": "^8.1.0",
+          "reaptcha": "^1.7.3"
       },
       "devDependencies": {
           "@types/node": "^16.11.10",
@@ -52,7 +64,7 @@ npm manifest:
           "typescript": "4.4.4"
       },
       "engines": {
-          "node": "14.18.1",
+          "node": "14.19.1",
           "npm": "8.1.3"
       }
   }
@@ -719,6 +731,11 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/@ctrl/tinycolor/-/tinycolor-3.4.0.tgz#c3c5ae543c897caa9c2a68630bed355be5f9990f"
     integrity sha512-JZButFdZ1+/xAfpguQHoabIXkcqRRKpMrWKBkpEZZyxfY9C1DpADFB8PEqGSTeFr135SaTRfKqGKx5xSCLI7ZQ==
   
+  "@emailjs/browser@^3.4.0":
+    version "3.4.0"
+    resolved "https://registry.yarnpkg.com/@emailjs/browser/-/browser-3.4.0.tgz#47e9bf7b52a45ec416a6c82b89876316e32053aa"
+    integrity sha512-pTR9wEj0KLrJBVWFfB6IFEwmGIod/6cfN541Y0TVN2+9Bbn+R9a8gq6GeJZ6ggbYs36J3gCTXDyVKhtxjRsjtw==
+  
   "@emotion/babel-plugin@^11.3.0":
     version "11.3.0"
     resolved "https://registry.yarnpkg.com/@emotion/babel-plugin/-/babel-plugin-11.3.0.tgz#3a16850ba04d8d9651f07f3fb674b3436a4fb9d7"
@@ -747,6 +764,11 @@ Lockfile:
       "@emotion/utils" "^1.0.0"
       "@emotion/weak-memoize" "^0.2.5"
       stylis "^4.0.10"
+  
+  "@emotion/core@^11.0.0":
+    version "11.0.0"
+    resolved "https://registry.yarnpkg.com/@emotion/core/-/core-11.0.0.tgz#d075867e07864119de7cfd5268c15012bd2d6290"
+    integrity sha512-w4sE3AmHmyG6RDKf6mIbtHpgJUSJ2uGvPQb8VXFL7hFjMPibE8IiehG8cMX3Ztm4svfCQV6KqusQbeIOkurBcA==
   
   "@emotion/hash@^0.8.0":
     version "0.8.0"
@@ -4751,6 +4773,11 @@ Lockfile:
     integrity sha512-cMhu7c/8rdhkHXWsY+osBhfSy0JikwpHK/5+imo+LpeasTF8ouErHrlYkwT0++njiyuDvc7OFY5T3ukvZ8qmFQ==
     dependencies:
       picomatch "^2.2.1"
+  
+  reaptcha@^1.7.3:
+    version "1.7.3"
+    resolved "https://registry.yarnpkg.com/reaptcha/-/reaptcha-1.7.3.tgz#a773ce1fc5228de8a2bb28495dfc0be0bda7b30b"
+    integrity sha512-j2+JvHssw8FO43aDMrL+Ylb0nlDJDRZNK2olpIMO1SQBkZO2S9c3+oTTJJFPjHznkpfN9RahKBl8NIeL4VHrWA==
   
   regenerator-runtime@0.13.4:
     version "0.13.4"
