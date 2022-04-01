@@ -85,7 +85,7 @@ const Form = () => {
     setName(e.target.value)
     if (e.target.value === "")
       setValidName({ error: true, msg: "Name is required" })
-    else setValidName({ error: false, msg: "good" })
+    else setValidName({ error: false, msg: "is valid" })
     if (e.target.value.length >= 20)
       setValidName({ error: true, msg: "Name must be lower 20 charecters" })
   }
@@ -96,7 +96,7 @@ const Form = () => {
 
     if (e.target.value === "")
       setValidMsg({ error: true, msg: "Message is required" })
-    else setValidMsg({ error: false, msg: "good" })
+    else setValidMsg({ error: false, msg: "is valid" })
   }
 
   const handleSubmit = () => {
