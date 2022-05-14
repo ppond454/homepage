@@ -92,7 +92,7 @@ export default ({ project, count }: Props) => {
 
             <Heading textAlign="center">{project[0].name}</Heading>
 
-            <Box maxW={600} my="20px" shadow="lg">
+            <Box maxW={600} my="20px" >
               <NextImg
                 src={`${project[0].pic}`}
                 alt={project[0].name}
