@@ -15,7 +15,7 @@ const index = ({ children }: Props) => {
   return (
     <>
       {visible && <Nav />}
-      <ScrollerMotion spring={{ mass: 2, stiffness: 200, damping: 100 }}>
+      <ScrollerMotion spring={{ mass: 1.5, stiffness: 200, damping: 70 }}>
         <main>{children}</main>
       </ScrollerMotion>
       <Footer />
