@@ -45,9 +45,9 @@ const nav = (props: Props) => {
         p={{ base: "3", md: "0" }}
         display="flex"
         maxW="container.md"
-        // wrap="warp"
-        // align="center"
-        // justify="space-between"
+        flexWrap="wrap"
+        align="center"
+        justify="space-between"
       >
         <Flex align="center" mr={5}>
           <NextLink href="/">
@@ -82,7 +82,7 @@ const nav = (props: Props) => {
           {/* <Spacer  /> */}
         </Stack>
 
-        <Box flex={1} >
+        <Box flex={1} align="right">
           <Toggle />
 
           <Box ml={2} display={{ base: "inline-block", md: "none" }}>
