@@ -41,7 +41,7 @@ const Skill = ({ skill }: Props) => {
 
   return (
     <>
-      <Motions inView={inView} name="skill" >
+      <Motions inView={inView}  >
         <Center flexDirection="column" ref={ref}  >
           <Container textAlign="left">
             <Heading size="lg" variant="section-title">
@@ -87,7 +87,7 @@ const Skill = ({ skill }: Props) => {
                       <Box
                         borderTopRadius={10}
                         justifyContent="center"
-                        d="flex"
+                        display="flex"
                       >
                         <ImgMotion src={items.logo} h="80px" alt={items.name} />
                       </Box>
@@ -143,7 +143,7 @@ const Skill = ({ skill }: Props) => {
                       <Box
                         borderTopRadius={10}
                         justifyContent="center"
-                        d="flex"
+                        display="flex"
                       >
                         <ImgMotion
                           m={1}
