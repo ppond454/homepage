@@ -15,6 +15,7 @@ import {
   MenuItem,
   MenuList,
   useColorModeValue,
+  Spacer
 } from "@chakra-ui/react"
 import { ExternalLinkIcon, HamburgerIcon } from "@chakra-ui/icons"
 import Toggle from "../containers/toggle"
@@ -46,8 +47,8 @@ const nav = (props: Props) => {
         display="flex"
         maxW="container.md"
         flexWrap="wrap"
-        align="center"
-        justify="space-between"
+        alignSelf="center"
+        justifyContent="space-between"
       >
         <Flex align="center" mr={5}>
           <NextLink href="/">
@@ -67,7 +68,7 @@ const nav = (props: Props) => {
           direction={{ base: "column", md: "row" }}
           display={{ base: "none", md: "flex" }}
           width={{ base: "full", md: "auto" }}
-          alignItems="center"
+          align="center"
           flexGrow={1}
           mt={{ base: 4, nmd: 0 }}
           spacing="4"
@@ -79,12 +80,11 @@ const nav = (props: Props) => {
             <ExternalLinkIcon />
           </Link>
 
-          {/* <Spacer  /> */}
         </Stack>
+        {/* <Spacer  /> */}
 
-        <Box flex={1} align="right">
+        <Box display="inline-flex"  alignSelf="right" >
           <Toggle />
-
           <Box ml={2} display={{ base: "inline-block", md: "none" }}>
             <Menu isLazy id="navbar-menu">
               <MenuButton
