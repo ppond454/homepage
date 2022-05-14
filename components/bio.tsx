@@ -1,5 +1,7 @@
 import { Container, Text, Heading, Box, Divider, Stack } from "@chakra-ui/react"
 import React from "react"
+import { useInView } from "react-intersection-observer"
+import Motions from "../containers/motions/motions"
 
 interface Props {
   detail: {
@@ -10,8 +12,15 @@ interface Props {
 }
 
 const Bio = ({ detail }: Props) => {
+
+  const [ ref, inView ] = useInView({
+    threshold: 0.35,
+  })
+
   return (
-    <Container mb="8" mt="8">
+    <Motions inView={inView} > 
+ 
+    <Container ref={ref} mb="8" mt="8">
       <Heading size="lg" variant="section-title">
         Education
       </Heading>
@@ -43,6 +52,7 @@ const Bio = ({ detail }: Props) => {
         )
       })}
     </Container>
+    </Motions>
   )
 }
 

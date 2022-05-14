@@ -1,5 +1,7 @@
 import type { NextPage } from "next"
 import { GetStaticProps } from "next"
+import React from "react"
+import { ScrollerMotion } from "scroller-motion"
 
 import Bio from "../components/bio"
 import Intro from "../components/intro"
@@ -7,11 +9,8 @@ import Skill from "../components/skill"
 import Project from "../components/project"
 import { skill } from "../components/data/skill"
 import { detail } from "../components/data/detail"
-
-import Motions from "../containers/motions/motions"
 import { Props } from "../type/index"
 import { getData } from "../function/index"
-import { motion } from "framer-motion"
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const project = await getData()
@@ -27,16 +26,15 @@ export const getStaticProps: GetStaticProps = async (context) => {
 const index = ({ skill, detail, project }: Props) => {
   return (
     <>
-      <Motions duratime={1}>
+      <ScrollerMotion spring={{ mass: 2, stiffness: 200, damping: 100 }}>
         <Intro />
-      </Motions>
-      <Motions duratime={2}>
+
         <Bio detail={detail} />
-      </Motions>
-      <Motions duratime={3}>
+
         <Skill skill={skill} />
-      </Motions>
+
         <Project project={project} />
+      </ScrollerMotion>
     </>
   )
 }

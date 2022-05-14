@@ -21,6 +21,7 @@ import {
   Button,
   Avatar,
   useColorModeValue,
+  Center,
 } from "@chakra-ui/react"
 import { ExternalLinkIcon, ChevronLeftIcon } from "@chakra-ui/icons"
 import NextImg from "next/image"
@@ -66,15 +67,15 @@ export default ({ project, count }: Props) => {
 
   return (
     <HeadTitle title={`page of ${router.query.id}`}>
-      <Box align="center" pt={{ base: "100px", md: "70px" }}>
-        <Box
-          p="20px"
-          mx={{ base: "15px", md: "15%" }}
-          bg={useColorModeValue("#f8f5f1", "whiteAlpha.50")}
-          shadow="xl"
-          borderRadius={10}
-        >
-          <Motions duratime={1}>
+      <Motions inView={true}>
+        <Center pt={{ base: "100px", md: "70px" }}>
+          <Box
+            p="20px"
+            mx={{ base: "15px", md: "15%" }}
+            bg={useColorModeValue("#f8f5f1", "whiteAlpha.50")}
+            shadow="xl"
+            borderRadius={10}
+          >
             <Flex
               align="center"
               mb="20px"
@@ -83,14 +84,13 @@ export default ({ project, count }: Props) => {
             >
               <Avatar mr="6px" name="profile" src="/images/profile.jpg" />
 
-              <Box align="left">
+              <Box alignItems="left">
                 <Heading fontSize="md">Siritep Tongdoung</Heading>
                 <Text fontSize="14px">21 Feb</Text>
               </Box>
             </Flex>
-          </Motions>
-          <Motions duratime={1.3}>
-            <Heading>{project[0].name}</Heading>
+
+            <Heading textAlign="center">{project[0].name}</Heading>
 
             <Box maxW={600} my="20px" shadow="lg">
               <NextImg
@@ -103,24 +103,20 @@ export default ({ project, count }: Props) => {
                 blurDataURL={`${project[0].pic}`}
               />
             </Box>
-          </Motions>
 
-          <Box textAlign="left" mx={{ base: "none", md: "10%" }} maxW={650}>
-            <Motions duratime={1.6}>
+            <Box textAlign="left" mx={{ base: "none", md: "5%" }} maxW={650}>
               <Heading fontSize="2xl" as="u">
                 Information
               </Heading>
 
               <Text my="2">{`${project[0].description}`}</Text>
-            </Motions>
-            <Motions duratime={1.6}>
+
               <Heading fontSize="2xl" as="u">
                 Method
               </Heading>
               <Text my="2">{`${project[0].method}`}</Text>
-            </Motions>
-            <Motions duratime={1.9}>
-              <List align="left">
+
+              <List alignItems="left">
                 <ListItem>
                   <Link isExternal href={project[0].demo}>
                     Live Demo <ExternalLinkIcon />
@@ -137,10 +133,9 @@ export default ({ project, count }: Props) => {
                   )
                 })}
               </List>
-            </Motions>
-          </Box>
-          <Motions duratime={2.2}>
-            <Box my={4} display="inline-block">
+            </Box>
+
+            <Center my={4} >
               {project[0].fwork.map((items, key) => {
                 return (
                   <Code
@@ -152,19 +147,19 @@ export default ({ project, count }: Props) => {
                   </Code>
                 )
               })}
-            </Box>
-          </Motions>
+            </Center>
 
-          <Box display="flex">
-            <NextLink passHref href="/#project-sec">
-              <Button as="a" variant="solid" colorScheme="teal">
-                <ChevronLeftIcon />
-                Go Back
-              </Button>
-            </NextLink>
+            <Box display="flex">
+              <NextLink passHref href="/#project-sec">
+                <Button as="a" variant="solid" colorScheme="teal">
+                  <ChevronLeftIcon />
+                  Go Back
+                </Button>
+              </NextLink>
+            </Box>
           </Box>
-        </Box>
-      </Box>
+        </Center>
+      </Motions>
     </HeadTitle>
   )
 }

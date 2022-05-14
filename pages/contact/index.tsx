@@ -31,7 +31,7 @@ interface Props {}
 export const Index = (props: Props) => {
   return (
     <HeadTitle title="Contact">
-      <Motions duratime={1}>
+      <Motions inView={true} >
         <Form />
       </Motions>
     </HeadTitle>

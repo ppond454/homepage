@@ -35,14 +35,15 @@ const Cards = ({ project }: Props) => {
     <>
       {project.map((val) => {
         return (
-          <Motions key={val.id} duratime={val.id} >
+          <Motions key={val.id} inView={true} name={val.name} >
           <NextLink  href={`/projects/${val.id}`} passHref>
             <BoxMotion
               key={val.id}
               borderWidth="1px"
               cursor="pointer"
               rounded="xl"
-              m={{ base: "7", md: "10" }}
+              mx={{ base: "7", md: "10" }}
+              my={{ base: "2", md: "2" }}
               w={{ base: "xs", md: "xl" }}
               display={{ base: "inline-block", md: "flex" }}
               bg={useColorModeValue("#f8f5f1", "whiteAlpha.50")}
