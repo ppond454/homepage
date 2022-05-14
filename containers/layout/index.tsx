@@ -3,19 +3,21 @@ import Head from "next/head"
 import Nav from "../../components/nav"
 import Footer from "../../components/footer"
 import { useVisible } from "../motions/navmotions"
+import { ScrollerMotion } from "scroller-motion"
 
 interface Props {
   children?: React.ReactNode
 }
 
-const index = ({ children}: Props) => {
+const index = ({ children }: Props) => {
   const visible: boolean = useVisible()
-
 
   return (
     <>
       {visible && <Nav />}
-      <main>{children}</main>
+      <ScrollerMotion spring={{ mass: 2, stiffness: 200, damping: 100 }}>
+        <main>{children}</main>
+      </ScrollerMotion>
       <Footer />
     </>
   )

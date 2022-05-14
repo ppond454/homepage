@@ -1,7 +1,6 @@
 import type { NextPage } from "next"
 import { GetStaticProps } from "next"
 import React from "react"
-import { ScrollerMotion } from "scroller-motion"
 
 import Bio from "../components/bio"
 import Intro from "../components/intro"
@@ -26,7 +25,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
 const index = ({ skill, detail, project }: Props) => {
   return (
     <>
-      <ScrollerMotion spring={{ mass: 2, stiffness: 200, damping: 100 }}>
         <Intro />
 
         <Bio detail={detail} />
@@ -34,7 +32,6 @@ const index = ({ skill, detail, project }: Props) => {
         <Skill skill={skill} />
 
         <Project project={project} />
-      </ScrollerMotion>
     </>
   )
 }
