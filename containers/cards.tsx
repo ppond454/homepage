@@ -35,7 +35,7 @@ const Cards = ({ project }: Props) => {
     <>
       {project.map((val) => {
         return (
-          <Motions key={val.id} inView={true} name={val.name} >
+          <Motions key={val.id} inView={true} >
           <NextLink  href={`/projects/${val.id}`} passHref>
             <BoxMotion
               key={val.id}
