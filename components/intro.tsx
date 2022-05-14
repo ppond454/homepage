@@ -22,7 +22,7 @@ const Intro = (props: Props) => {
 
 
   return (
-    <Motions inView={inView} name="intro" >
+    <Motions inView={inView}>
       <Container pt="20" ref={ref}>
         <Box
           bg={useColorModeValue("#D7CEC6", "whiteAlpha.200")}
