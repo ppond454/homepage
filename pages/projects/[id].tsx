@@ -105,6 +105,7 @@ export default ({ project, count }: Props) => {
             <Box>
               <NextImg
                 src={`${project.pic}`}
+                priority={true}
                 alt={project.name}
                 width={1200}
                 height={900}
@@ -112,7 +113,6 @@ export default ({ project, count }: Props) => {
                 placeholder="blur"
                 blurDataURL={`${project.pic}`}
                 quality={100}
-                loading="lazy"
               />
             </Box>
 
