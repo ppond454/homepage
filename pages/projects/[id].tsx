@@ -23,7 +23,11 @@ import {
   useColorModeValue,
   Center,
 } from "@chakra-ui/react"
-import { ExternalLinkIcon, ChevronLeftIcon } from "@chakra-ui/icons"
+import {
+  ExternalLinkIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+} from "@chakra-ui/icons"
 import NextImg from "next/image"
 import NextLink from "next/link"
 import HeadTitle from "../../containers/layout/headTitle"
@@ -31,6 +35,7 @@ import Motions from "../../containers/motions/motions"
 import { getData, getDataPage } from "../../function/index"
 import { Project, Props } from "../../type/projectType"
 import { Params } from "next/dist/server/router"
+import CustomNavPage from "../../containers/customNavPage"
 
 export const getStaticPaths: GetStaticPaths<Params> = async () => {
   const project: Project[] = await getData()
@@ -92,7 +97,7 @@ export default ({ project, count }: Props) => {
 
             <Heading textAlign="center">{project[0].name}</Heading>
 
-            <Box maxW={600} my="20px" >
+            <Box maxW={600} my="20px">
               <NextImg
                 src={`${project[0].pic}`}
                 alt={project[0].name}
@@ -135,7 +140,7 @@ export default ({ project, count }: Props) => {
               </List>
             </Box>
 
-            <Center my={4} >
+            <Center my={4}>
               {project[0].fwork.map((items, key) => {
                 return (
                   <Code
@@ -149,14 +154,41 @@ export default ({ project, count }: Props) => {
               })}
             </Center>
 
-            <Box display="flex">
-              <NextLink passHref href="/#project-sec">
-                <Button as="a" variant="solid" colorScheme="teal">
-                  <ChevronLeftIcon />
-                  Go Back
-                </Button>
-              </NextLink>
-            </Box>
+            <Center display="flex">
+              <Box>
+                {Number(router.query.id) !== 1 && (
+                  <Button
+                    zIndex={0}
+                    position="relative"
+                    onClick={() => {
+                      router.push(`/projects/${Number(router.query.id) - 1}`)
+                    }}
+                  >
+                    <ChevronLeftIcon />
+                  </Button>
+                )}
+                {[...Array(count)].map((val, i) => {
+                  return (
+                    <CustomNavPage href={`/projects/${i + 1}`}>
+                      {i + 1}
+                    </CustomNavPage>
+                  )
+                })}
+                {count !== Number(router.query.id) && (
+                  <Button
+                    zIndex={0}
+                    position="relative"
+                    onClick={() => {
+                      router.push(`/projects/${Number(router.query.id) + 1}`)
+                    }}
+                  >
+                    <ChevronRightIcon />
+                  </Button>
+                )}
+
+                <Text m="10px">{`page of ${router.query.id}`}</Text>
+              </Box>
+            </Center>
           </Box>
         </Center>
       </Motions>

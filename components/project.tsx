@@ -25,8 +25,8 @@ const Project = ({ project }: Props) => {
   })
   return (
     <Motions inView={inView}>
-      <Center mt="20px" ref={ref} flexDir="column" id="project-sec">
-        <Container textAlign="left">
+      <Center mt="20px" ref={ref} flexDir="column"  >
+        <Container textAlign="left" id="projects-sec">
           <Heading size="lg" variant="section-title">
             Project
           </Heading>
