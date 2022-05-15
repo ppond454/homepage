@@ -1,5 +1,6 @@
+
 export interface Props {
-  project: Project[]
+  project: Project
   count : number
 }
 export interface Project {
@@ -14,6 +15,6 @@ export interface Project {
   method: string
 }
 export interface createType {
-  _seconds: Date
-  _nanoseconds: Date
+  _seconds: number
+  _nanoseconds: number
 }

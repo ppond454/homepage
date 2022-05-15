@@ -1,5 +1,5 @@
 import { useRouter } from "next/router"
-import { GetStaticPaths, GetStaticProps } from "next"
+import { GetStaticPaths, GetStaticProps, GetServerSideProps } from "next"
 import {
   Container,
   Heading,
@@ -30,6 +30,8 @@ import {
 } from "@chakra-ui/icons"
 import NextImg from "next/image"
 import NextLink from "next/link"
+import moment from "moment"
+
 import HeadTitle from "../../containers/layout/headTitle"
 import Motions from "../../containers/motions/motions"
 import { getData, getDataPage } from "../../function/index"
@@ -55,13 +57,13 @@ export const getStaticPaths: GetStaticPaths<Params> = async () => {
 export const getStaticProps: GetStaticProps<Props, Params> = async ({
   params,
 }) => {
-  const project: Project[] = await getDataPage(params!.id)
+  const _project: Project[] = await getDataPage(params!.id)
   const data = await getData()
   const count = Number(data.length)
 
   return {
     props: {
-      project,
+      project: _project[0],
       count,
     },
   }
@@ -69,6 +71,7 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({
 
 export default ({ project, count }: Props) => {
   const router = useRouter()
+  let date: Date = new Date(project.create._seconds * 1000)
 
   return (
     <HeadTitle title={`page of ${router.query.id}`}>
@@ -91,21 +94,25 @@ export default ({ project, count }: Props) => {
 
               <Box alignItems="left">
                 <Heading fontSize="md">Siritep Tongdoung</Heading>
-                <Text fontSize="14px">21 Feb</Text>
+                <Text ml="5px" fontSize="12px">
+                  {moment(date).format("ll")}
+                </Text>
               </Box>
             </Flex>
 
-            <Heading textAlign="center">{project[0].name}</Heading>
+            <Heading textAlign="center">{project.name}</Heading>
 
-            <Box maxW={600} my="20px">
+            <Box>
               <NextImg
-                src={`${project[0].pic}`}
-                alt={project[0].name}
-                width={1228}
-                height={903}
+                src={`${project.pic}`}
+                alt={project.name}
+                width={1200}
+                height={900}
                 layout="responsive"
                 placeholder="blur"
-                blurDataURL={`${project[0].pic}`}
+                blurDataURL={`${project.pic}`}
+                quality={100}
+                loading="lazy"
               />
             </Box>
 
@@ -114,20 +121,17 @@ export default ({ project, count }: Props) => {
                 Information
               </Heading>
 
-              <Text my="2">{`${project[0].description}`}</Text>
+              <Text my="2">{`${project.description}`}</Text>
 
-              <Heading fontSize="2xl" as="u">
-                Method
-              </Heading>
-              <Text my="2">{`${project[0].method}`}</Text>
+              <Text my="2">{`${project.method}`}</Text>
 
               <List alignItems="left">
                 <ListItem>
-                  <Link isExternal href={project[0].demo}>
+                  <Link isExternal href={project.demo}>
                     Live Demo <ExternalLinkIcon />
                   </Link>
                 </ListItem>
-                {project[0].source.map((val, i) => {
+                {project.source.map((val, i) => {
                   return (
                     <ListItem key={i}>
                       <Link isExternal key={i} href={val as string}>
@@ -140,19 +144,22 @@ export default ({ project, count }: Props) => {
               </List>
             </Box>
 
-            <Center my={4}>
-              {project[0].fwork.map((items, key) => {
+            <Wrap
+              justify="center"
+              w="50"
+              my={4} 
+              spacing="6px"
+            >
+              {project.fwork.map((items, key) => {
                 return (
-                  <Code
-                    m={{ base: "4px", md: "7px" }}
-                    key={key}
-                    fontSize="12px"
-                  >
-                    {items}
-                  </Code>
+                  <WrapItem key={key}>
+                    <Code m={{ base: "4px", md: "7px" }} fontSize="12px">
+                      {items}
+                    </Code>
+                  </WrapItem>
                 )
               })}
-            </Center>
+            </Wrap>
 
             <Center display="flex">
               <Box>
@@ -169,7 +176,7 @@ export default ({ project, count }: Props) => {
                 )}
                 {[...Array(count)].map((val, i) => {
                   return (
-                    <CustomNavPage href={`/projects/${i + 1}`}>
+                    <CustomNavPage key={i} href={`/projects/${i + 1}`}>
                       {i + 1}
                     </CustomNavPage>
                   )
@@ -186,7 +193,10 @@ export default ({ project, count }: Props) => {
                   </Button>
                 )}
 
-                <Text m="10px">{`page of ${router.query.id}`}</Text>
+                <Text
+                  m="10px"
+                  textAlign="center"
+                >{`page of ${router.query.id}`}</Text>
               </Box>
             </Center>
           </Box>
