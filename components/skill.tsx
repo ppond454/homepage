@@ -9,7 +9,7 @@ import {
   Link,
   useColorModeValue,
   Code,
-  Center
+  Center,
 } from "@chakra-ui/react"
 import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
@@ -35,21 +35,20 @@ interface Props {
 const Skill = ({ skill }: Props) => {
   const { lang, fwork } = skill
 
-  const [ ref, inView ] = useInView({
+  const [ref, inView] = useInView({
     threshold: 0.4,
   })
 
   return (
     <>
-      <Motions inView={inView}  >
-        <Center flexDirection="column" ref={ref}  >
+      <Motions inView={inView}>
+        <Center flexDirection="column" ref={ref}>
           <Container textAlign="left">
             <Heading size="lg" variant="section-title">
               Skill
             </Heading>
           </Container>
           <Box
-          
             textAlign="center"
             bg={useColorModeValue("#D7CEC7", "none")}
             p="5px"
@@ -68,8 +67,8 @@ const Skill = ({ skill }: Props) => {
                     <BoxMotion
                       href={items.link}
                       isExternal
-                      w="6rem"
-                      h="7rem"
+                      w={{ base: "5rem", md: "6rem" }}
+                      h={{ base: "6rem", md: "7rem" }}
                       p="1"
                       key={i}
                       borderRadius={20}
@@ -89,7 +88,11 @@ const Skill = ({ skill }: Props) => {
                         justifyContent="center"
                         display="flex"
                       >
-                        <ImgMotion src={items.logo} h="80px" alt={items.name} />
+                        <ImgMotion
+                          src={items.logo}
+                          h={{ base: "60px", md: "80px" }}
+                          alt={items.name}
+                        />
                       </Box>
                       <Box p={1} justifyContent="center">
                         <Text fontSize={{ base: "13", md: "14" }}>
@@ -124,8 +127,8 @@ const Skill = ({ skill }: Props) => {
                       justify="center"
                       href={items.link}
                       isExternal
-                      w="6rem"
-                      h="7rem"
+                      w={{ base: "5rem", md: "6rem" }}
+                      h={{ base: "6rem", md: "7rem" }}
                       key={i}
                       borderRadius={10}
                       bg="whiteAlpha.600"
@@ -148,7 +151,7 @@ const Skill = ({ skill }: Props) => {
                         <ImgMotion
                           m={1}
                           src={items.logo}
-                          h="80px"
+                          h={{ base: "60px", md: "80px" }}
                           alt={items.name}
                         />
                       </Box>

@@ -1,4 +1,5 @@
 import { useInView } from "react-intersection-observer"
+import LinkNext from "next/link"
 import {
   Image,
   Text,
@@ -7,7 +8,10 @@ import {
   Container,
   Flex,
   useColorModeValue,
+  Link,
+  Center,
 } from "@chakra-ui/react"
+import { ExternalLinkIcon, HamburgerIcon } from "@chakra-ui/icons"
 import React from "react"
 
 import Motions from "../containers/motions/motions"
@@ -15,11 +19,10 @@ import Motions from "../containers/motions/motions"
 interface Props {}
 
 const Intro = (props: Props) => {
-  let IntroEl = React.useRef<Element>(null)  
-  const [ ref, inView ] = useInView({
+  let IntroEl = React.useRef<Element>(null)
+  const [ref, inView] = useInView({
     threshold: 0.8,
   })
-
 
   return (
     <Motions inView={inView}>
@@ -35,9 +38,22 @@ const Intro = (props: Props) => {
             fontSize={{ base: "md", md: "lg" }}
             textAlign="center"
             // color="#565656"
+            mb="7px"
           >
-            Hi ! I&apos;m very interested in Frontend developer
+            Hi ! I&apos;m very interested in Web developer
           </Text>
+
+          <Center fontSize="12px" as="em" >
+            <Text >
+              Click on the Link to see my&nbsp;
+            </Text>
+            <LinkNext href="/api/resume" passHref>
+              <Link _hover={{opacity:"20%" }} mr="5px" target="_blank" href="/api/resume" style={{textDecoration: "underline"}}>
+                Resume
+                <ExternalLinkIcon />
+              </Link>
+            </LinkNext>
+          </Center>
         </Box>
         <Flex>
           <Box pt="20" mr="7" textAlign="center">
