@@ -126,11 +126,11 @@ export default ({ project, count }: Props) => {
               <Text my="2">{`${project.method}`}</Text>
 
               <List alignItems="left">
-                <ListItem>
+                {project.demo && <ListItem>
                   <Link isExternal href={project.demo}>
                     Live Demo <ExternalLinkIcon />
                   </Link>
-                </ListItem>
+                </ListItem>}
                 {project.source.map((val, i) => {
                   return (
                     <ListItem key={i}>
