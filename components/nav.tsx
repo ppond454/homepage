@@ -59,7 +59,7 @@ const nav = (props: Props) => {
                 letterSpacing={"tighter"}
                 // color="#565656"
               >
-                Siritep Tongduang
+                Siritep Tongdaung
               </Heading>
             </a>
           </NextLink>

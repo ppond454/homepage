@@ -62,7 +62,7 @@ const Intro = (props: Props) => {
               // color="#565656"
               letterSpacing={"tighter"}
             >
-              Siritep Tongduang
+              Siritep Tongdaung
             </Heading>
             <Text color="red.200">Bachelor of Engineering </Text>
           </Box>
