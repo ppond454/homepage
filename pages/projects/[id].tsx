@@ -93,7 +93,7 @@ export default ({ project, count }: Props) => {
               <Avatar mr="6px" name="profile" src="/images/profile.jpg" />
 
               <Box alignItems="left">
-                <Heading fontSize="md">Siritep Tongdoung</Heading>
+                <Heading fontSize="md">Siritep Tongdaung</Heading>
                 <Text ml="5px" fontSize="12px">
                   {moment(date).format("ll")}
                 </Text>
